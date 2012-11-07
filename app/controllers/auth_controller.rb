@@ -3,7 +3,7 @@ require 'linkedin'
 class AuthController < ApplicationController
   def index
     # get your api keys at https://www.linkedin.com/secure/developer
-    client = LinkedIn::Client.new("Your_API_KEY", "Your_SECRET")
+    client = LinkedIn::Client.new("YOUR_API_KEY", "YOUR_SECRET")
     request_token = client.request_token(:oauth_callback => 
                                   "http://#{request.host_with_port}/auth/callback")
     session[:rtoken] = request_token.token # request token
@@ -12,7 +12,7 @@ class AuthController < ApplicationController
   end
 
   def callback
-    client = LinkedIn::Client.new("Your_API_KEY", "Your_SECRET")
+    client = LinkedIn::Client.new("YOUR_API_KEY", "YOUR_SECRET")
     if session[:atoken].nil?
       pin = params[:oauth_verifier]
       atoken, asecret = client.authorize_from_request(session[:rtoken], session[:rsecret], pin)
@@ -23,5 +23,8 @@ class AuthController < ApplicationController
     end
     @profile = client.profile(:fields => [:first_name]).first_name
     @profiles = client.profile(:fields => [:last_name]).last_name  
+   # @positions = client.profile(:fields => [:positions]).positions
+   # @education = client.profile(:fields => [:education]).education
+    @headline = client.profile(:fields => [:headline]).headline
   end
 end
