@@ -18,19 +18,6 @@
 <input type="hidden" name="linkedin-id" value="<?js= id ?>" />
 <input type="submit" name="submit" value="Sign Up"/>
 </script>
-
-<div class="container">
-  <%= render :partial => "shared/header" %>
-  <div>&nbsp;</div>
-  <div class="row">
-    <div class="span9">
-      <%= yield %>
-      &nbsp;
-    </div>
-    <div class="span3 sidebar">
-        <%= yield :sidebar%>
-    </div>
-    </div><hr><%= render :partial => "shared/footer" %>
-    </div>
+<%= yield %>
 </body>
 </html>

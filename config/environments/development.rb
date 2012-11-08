@@ -1,4 +1,9 @@
 ShareOnSchedule::Application.configure do
+
+  LINKEDIN_API_KEY="u75dvcqku00k"
+  LINKEDIN_SECRET_KEY="KH6gnEKHs71Ph8Vx"
+  TWITTER_CONSUMER_KEY = "2lPup6YS8TaC9WKNOwj0g",
+  TWITTER_CONSUMER_SECRET = "YiNbL9ossS70oZCNNvqKbz4oi2zE4ugfO5fdI9J6A0"
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
