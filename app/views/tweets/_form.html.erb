@@ -1,4 +1,4 @@
-<div class="well form_tweet">
+
 <%=form_for(@tweet, :html => { :class => 'form-horizontal' } ) do |f| %> 
     <div class="control-group">
       <%= f.label :content, "*Compose new tweet:", :class => "control-label"%>
@@ -10,8 +10,10 @@
     <div class="control-group">
     <%= f.label :tweet_time, "Set Time :", :class => "control-label" %>
      <div class="controls">
-    <%= f.datetime_select(:tweet_time,:default => DateTime.now,:ampm => true)%>
-     </div>
+      <%= f.text_field :tweet_time, :placeholder => 'Select Time to tweet', :class => "input-xlarge", :id => "date_time" %>
+    <%#= f.datetime_select(:tweet_time,:default => DateTime.now,:ampm => true)%>
+    </div>
+
     </div>
     <div class="control-group">
       <div class="controls">
@@ -19,4 +21,3 @@
       </div>
     </div>
 <% end %>
-</div>

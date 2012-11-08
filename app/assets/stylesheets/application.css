@@ -9,7 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- 
+ *= require jquery.ui.datetimepicker
  *= require_tree .
  */
 
@@ -22,12 +22,11 @@
 
  .container
  {
-   padding-top: 20px;
+   padding-top: 10px;
  }
 
 
 .btn-primary
 {
   background-color: #00ACED;
-
 }

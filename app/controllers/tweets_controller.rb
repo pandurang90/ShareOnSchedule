@@ -1,7 +1,9 @@
 class TweetsController < ApplicationController
+  #before_filter :authenticate_user!
   def index
-    @tweet=Tweet.new
+    #@tweets=current_user.tweets
     @tweets=Tweet.all
+    @tweet=Tweet.new
   end
 
   def create
