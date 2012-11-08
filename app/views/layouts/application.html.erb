@@ -5,19 +5,8 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  <script type="text/javascript" src="http://platform.linkedin.com/in.js">
-  api_key: u75dvcqku00k 
-  authorize: true
-</script>
 </head>
 <body>
-<script type="IN/Login"> 
-<form action="/register.html"> 
-<p>Your Name: <input type="text" name="name" value="<?js= firstName ?> <?js= lastName ?>" /></p>
-<p>Your Password: <input type="password" name="password" /></p>
-<input type="hidden" name="linkedin-id" value="<?js= id ?>" />
-<input type="submit" name="submit" value="Sign Up"/>
-</script>
 <div class="container">
   <%= render :partial => "shared/header" %>
   <div>&nbsp;</div>
