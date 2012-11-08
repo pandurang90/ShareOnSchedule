@@ -10,14 +10,12 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 			end
 
 		else
-			binding.pry
 			if(@account=Account.find_by_provider_and_uid(auth['provider'], auth['uid']))
 				current_user=@account.user
 				sign_in_and_redirect current_user
 			else
 				@user = User.create(:password => "asdf123", :password_confirmation => "asdf123", :email => auth['info']['email'])
 				@user.save! 
-				binding.pry
 				@account=@user.accounts.create(:username => auth['info']['nickname'], :uid => auth['uid'], :provider => auth['provider'])
 				current_user=@account.user
 				sign_in_and_redirect current_user
