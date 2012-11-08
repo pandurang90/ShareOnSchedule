@@ -1,13 +1,12 @@
 class TweetsController < ApplicationController
   #before_filter :authenticate_user!
   def index
-    #@tweets=current_user.tweets
-    @tweets=Tweet.all
-    @tweet=Tweet.new
+    @tweets=current_user.tweets
+    @tweet=current_user.tweets.new
   end
 
   def create
-    @tweet=Tweet.new(params[:tweet])
+    @tweet=current_user.tweets.new(params[:tweet])
     if @tweet.save
       redirect_to tweets_path
     else

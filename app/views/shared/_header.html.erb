@@ -12,10 +12,12 @@
           <li class="active">
             <%= link_to "Home", root_path%>
           </li>
-          <li><%=link_to "Profile", "#"%></li>
-          <li><%=link_to "Twitter", tweets_path%></li>
-          <li><%=link_to "Facebook", "#"%></li>
-          <li><%=link_to "LinkedIn", "#"%></li>
+          <%if current_user != nil%>
+            <li><%=link_to "Twitter", tweets_path%></li>
+            <li><%=link_to "Facebook", "#"%></li>
+            <li><%=link_to "LinkedIn", "#"%></li>
+            <li><%=link_to "Profile", "#"%></li> 
+          <%end%>
         </ul>
       </div>
     </div>
