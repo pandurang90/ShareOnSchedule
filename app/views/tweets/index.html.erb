@@ -4,15 +4,15 @@
 
 
 <% content_for :sidebar do %>
-  <ul class="nav nav-list">
-    <li class="nav-header">Recent tweets</li>
-      <% @tweets.each_with_index do |item| %>
-        <li><%= link_to "- #{item.content.truncate(100)}", tweet_path(item) %></li>
+<ul class="nav nav-list">
+	<li class="nav-header">Recent tweets</li>
+	<% @tweets.each_with_index do |item| %>
+	<li><%= link_to "- #{item.content.truncate(100)}", tweet_path(item) %></li>
 
-      <% end %>    
-       <li>tweet_path(item) ></li>
-        <li> tweet_path(item) ></li>
-         <li> tweet_path(item) ></li>
-  </ul>
+	<% end %>    
+	<li>tweet_path(item) ></li>
+	<li> tweet_path(item) ></li>
+	<li> tweet_path(item) ></li>
+</ul>
 <% end %>
 

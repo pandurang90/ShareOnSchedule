@@ -3,7 +3,8 @@
     <div class="control-group">
       <%= f.label :content, "*Compose new tweet:", :class => "control-label"%>
       <div class="controls">
-    <%= f.text_area :content, :placeholder => 'Compose new tweet....', :class => "input-xxlarge", :rows => 6 %>
+    <%= f.text_area :content, :placeholder => 'Compose new tweet....', 
+    :class => "input-xxlarge", :rows => 6 %>
       </div>
     </div>
     <div class="control-group">
@@ -12,6 +13,7 @@
       <%= f.text_field :tweet_time, :placeholder => 'Select Time to tweet', :class => "input-xlarge", :id => "date_time" %>
     <%#= f.datetime_select(:tweet_time,:default => DateTime.now,:ampm => true)%>
     </div>
+
     </div>
     <div class="control-group">
       <div class="controls">
@@ -19,6 +21,3 @@
       </div>
     </div>
 <% end %>
-
-
-
