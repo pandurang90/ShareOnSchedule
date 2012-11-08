@@ -2,12 +2,7 @@ require 'rubygems'
 require 'linkedin'
 require 'oauth'
 
-class AuthController < ApplicationController
-  
-  def index
-    render :text => request.env["omniauth.auth"].to_yaml
-  end
-  
+class AuthController < ApplicationController  
   def create
     render :text => request.env["omniauth.auth"].to_yaml
   end
