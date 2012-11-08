@@ -8,7 +8,6 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 				current_user.accounts.create(:username => auth['username'], :uid => auth['uid'], :provider => auth['provider'])
 				sign_in_and_redirect current_user
 			end
-
 		else
 			if(@account=Account.find_by_provider_and_uid(auth['provider'], auth['uid']))
 				current_user=@account.user
