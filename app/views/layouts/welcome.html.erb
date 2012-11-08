@@ -11,20 +11,6 @@
   </script>
 </head>
 <body>
-  <script type="IN/Login"> 
-  <form action="/register.html"> 
-  <p>Your Name: <input type="text" name="name" value="<?js= firstName ?> <?js= lastName ?>" /></p>
-  <p>Your Password: <input type="password" name="password" /></p>
-  <input type="hidden" name="linkedin-id" value="<?js= id ?>" />
-  <input type="submit" name="submit" value="Sign Up"/>
-  </script>
-  <div class="container">
-    <%= render :partial => "shared/header" %>
-    <div>&nbsp;</div>
-    <div class="row">
-      <div class="span9">
-        <%= yield %>&nbsp;
-      </div>
     <div class="span3 sidebar">
       <%#if current_user%>
         <span>
