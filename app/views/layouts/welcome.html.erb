@@ -11,6 +11,14 @@
   </script>
 </head>
 <body>
+  <div class="container">
+  <%= render :partial => "shared/header" %>
+  <div>&nbsp;</div>
+  <div class="row">
+    <div class="span9">
+      <%= yield %>
+      &nbsp;
+    </div>
     <div class="span3 sidebar">
         <span>
         <%=link_to "Sign In with Twitter", user_omniauth_authorize_path(:twitter),:class => "btn btn-primary twitter"%>
@@ -28,8 +36,7 @@
     </div>
     </div><hr><%= render :partial => "shared/footer" %>
     </div>
-    <hr>
-    <%= render :partial => "shared/footer" %>
-  </div>   
+
+ 
 </body>
 </html>
