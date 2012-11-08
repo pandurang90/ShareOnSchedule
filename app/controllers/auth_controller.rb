@@ -4,12 +4,14 @@ require 'oauth'
 
 class AuthController < ApplicationController  
   def create
+    binding.pry
     render :text => request.env["omniauth.auth"].to_yaml
   end
   
-  def callback 
-    request.env["omniauth.auth"]["credential"]
-    client = LinkedIn::Client.new("key", "secret")
+  def callback
+    binding.pry 
+    request.env["omniauth.auth"]["credentials"]
+    client = LinkedIn::Client.new("3k4b76isgyvi","vRAIHUmoyd4wDkJl")
     client.authorize_from_access(request.env["omniauth.auth"]["credentials"]["token"], request.env["omniauth.auth"]["credentials"]["secret"])    
     @profile = client.profile(:fields => [:first_name]).first_name
     @profiles = client.profile(:fields => [:last_name]).last_name  
