@@ -9,6 +9,7 @@ gem 'omniauth'
 gem 'linkedin', :git => "git://github.com/pengwynn/linkedin.git"
 gem 'omniauth-linkedin'
 gem 'omniauth-facebook'
+gem 'omniauth-twitter'
 gem 'oauth'
 gem 'pry'
 gem 'jquery-rails'
