@@ -6,43 +6,43 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <script type="text/javascript" src="http://platform.linkedin.com/in.js">
-  api_key: u75dvcqku00k 
+  api_key: 3k4b76isgyvi 
   authorize: true
-</script>
+  </script>
 </head>
 <body>
-<script type="IN/Login"> 
-<form action="/register.html"> 
-<p>Your Name: <input type="text" name="name" value="<?js= firstName ?> <?js= lastName ?>" /></p>
-<p>Your Password: <input type="password" name="password" /></p>
-<input type="hidden" name="linkedin-id" value="<?js= id ?>" />
-<input type="submit" name="submit" value="Sign Up"/>
-</script>
-
-<div class="container">
-  <%= render :partial => "shared/header" %>
-  <div>&nbsp;</div>
-  <div class="row">
-    <div class="span9">
-      <%= yield %>
-      &nbsp;
-    </div>
+  <script type="IN/Login"> 
+  <form action="/register.html"> 
+  <p>Your Name: <input type="text" name="name" value="<?js= firstName ?> <?js= lastName ?>" /></p>
+  <p>Your Password: <input type="password" name="password" /></p>
+  <input type="hidden" name="linkedin-id" value="<?js= id ?>" />
+  <input type="submit" name="submit" value="Sign Up"/>
+  </script>
+  <div class="container">
+    <%= render :partial => "shared/header" %>
+    <div>&nbsp;</div>
+    <div class="row">
+      <div class="span9">
+        <%= yield %>&nbsp;
+      </div>
     <div class="span3 sidebar">
-      <%#if current_user%>
-        <span>
-          <%=link_to "Sign In with Twitter", "/oauth/twitter",:class => "btn btn-primary twitter"%>
-        </span>
-        <div>&nbsp;</div>  
-        <%=link_to "Sign In with Facebook", "/oauth/facebook",:class => "btn btn-primary facebook"%>
-        <div>&nbsp;</div>  
-        <%=link_to "Sign In with LinkedIn", "/oauth/linkedin",:class => "btn btn-primary linkedin"%>
-        <div>&nbsp;</div>  
-        <%=link_to "Sign In or Create account", "#",:class => "btn btn-primary signin"%>
-      <%#end%>
+      <span>
+        <%=link_to "Sign In with Twitter", "/oauth/twitter",
+        :class => "btn btn-primary twitter"%>
+      </span>
+      <div>&nbsp;</div>  
+        <%=link_to "Sign In with Facebook", "/oauth/facebook",
+        :class => "btn btn-primary facebook"%>
+      <div>&nbsp;</div>  
+        <%=link_to "Sign In with LinkedIn", "/oauth/linkedin",
+        :class => "btn btn-primary linkedin"%>
+      <div>&nbsp;</div>  
+        <%=link_to "Sign In or Create account", "#",
+        :class => "btn btn-primary signin"%>
+      </div>
     </div>
-    </div><hr><%= render :partial => "shared/footer" %>
-    </div>
-    
-    
+    <hr>
+    <%= render :partial => "shared/footer" %>
+  </div>   
 </body>
 </html>
