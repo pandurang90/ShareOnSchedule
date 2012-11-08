@@ -11,13 +11,15 @@
 </script>
 </head>
 <body>
-<script type="IN/Login"> 
-<form action="/register.html"> 
-<p>Your Name: <input type="text" name="name" value="<?js= firstName ?> <?js= lastName ?>" /></p>
-<p>Your Password: <input type="password" name="password" /></p>
-<input type="hidden" name="linkedin-id" value="<?js= id ?>" />
-<input type="submit" name="submit" value="Sign Up"/>
-</script>
+	<% if user_signed_in? %>
+		Logged in as <%= current_user.email %>
+		<%= link_to 'edit profile', edit_user_registration_path %>
+		<%= link_to 'logout', destroy_user_session_path, method: :delete %>
+	<% else %>
+		<%= link_to 'sign up', new_user_registration_path %>
+		<%= link_to 'sign in', new_user_session_path %>
+		<%= link_to 'sign in with facebook', user_omniauth_authorize_path(:facebook) %>
+	<% end %>
 <%= yield %>
 </body>
 </html>

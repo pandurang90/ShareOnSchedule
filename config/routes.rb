@@ -1,4 +1,8 @@
 ShareOnSchedule::Application.routes.draw do
+  match '/auth/:provider/callback' => 'welcome#index'
+  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
+  root :to => 'welcome#index'
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
