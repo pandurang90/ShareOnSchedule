@@ -1,10 +1,10 @@
-<a data-toggle="modal" href="#myModal">Compose new tweet</a>
+<a data-toggle="modal" href="#myModal">Compose a New Tweet</a>
 <div class="form_tweet" id="myModal">
 	<%=render "form" %>
 </div>
 <% content_for :sidebar do %>
 	<ul class="nav nav-list">
-		<li class="nav-header">Recent tweets</li>
+		<li class="nav-header">Recent Tweets</li>
 			<% @tweets.each_with_index do |item| %>
 		<li>
 			<%= link_to "- #{item.content.truncate(100)}", tweet_path(item) %>

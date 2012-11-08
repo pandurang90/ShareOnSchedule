@@ -1,21 +1,21 @@
 <%= form_for(@tweet, :html => { :class => 'form-horizontal' } ) do |f| %> 
-  <div class="control-group">
-    <%= f.label :content, "*Compose new tweet:", :class => "control-label"%>
-    <div class="controls">
-      <%= f.text_area :content, :placeholder => 'Compose new tweet....', 
-      :class => "input-xxlarge", :rows => 6 %>
-    </div>
+<div class="control-group">
+  <%= f.label :content, "*Compose new tweet:", :class => "control-label"%>
+  <div class="controls">
+    <%= f.text_area :content, :placeholder => 'Compose new tweet....', 
+    :class => "input-xxlarge", :rows => 6 %>
   </div>
-  <div class="control-group">
-    <%= f.label :tweet_time, "Set Time :", :class => "control-label" %>
-    <div class="controls">
-      <%= f.text_field :tweet_time, :placeholder => 'Select Time to tweet', 
-      :class => "input-xlarge", :id => "date_time" %>
-    </div>
+</div>
+<div class="control-group">
+  <%= f.label :tweet_time, "Set Time :", :class => "control-label" %>
+  <div class="controls">
+    <%= f.text_field :tweet_time, :placeholder => 'Select Time to tweet', 
+    :class => "input-xlarge", :id => "date_time" %>
   </div>
-    <div class="control-group">
-      <div class="controls">
-        <%= f.submit "Schedule", :class => "btn" %>
-      </div>
-    </div>
+</div>
+<div class="control-group">
+  <div class="controls">
+    <%= f.submit "Schedule", :class => "btn" %>
+  </div>
+</div>
 <% end %>
