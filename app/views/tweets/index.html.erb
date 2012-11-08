@@ -1,4 +1,8 @@
-<%=render "form" %>
+
+<a data-toggle="modal" href="#myModal">Compose new tweet</a>
+<div class="form_tweet" id="myModal"> <%=render "form" %> </div>
+
+
 <% content_for :sidebar do %>
   <ul class="nav nav-list">
     <li class="nav-header">Recent tweets</li>
@@ -11,3 +15,4 @@
          <li> tweet_path(item) ></li>
   </ul>
 <% end %>
+
