@@ -40,4 +40,5 @@ class LinkedinsController < ApplicationController
       @linkedin.destroy
         redirect_to linkedins_url
   end
+  
 end
