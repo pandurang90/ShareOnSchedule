@@ -1,29 +1,18 @@
 <%= form_for(@linkedin, :html => { :class => 'form-horizontal' }) do |f| %>
 <div class="control-group">
-  <%= f.label :share, "*Compose a new Post:", :class => "control-label"%>
+  <%= f.label :share, "*Compose a new Post to Share:", :class => "control-label"%>
   <div class="controls">
-    <%= f.text_area :share, :placeholder => 'Compose a new Post...', 
+    <%= f.text_area :share, :placeholder => 'Compose a new Post to Share...', 
     :class => "input-xxlarge", :rows => 6 %>
   </div>
 </div>
 <div class="control-group">
-  <%= f.label :post_time, "Select the Time for Scheduling :", 
-  :class => "control-label" %>
+<%= f.label :post_time, "Select the date and time :", :class => "control-label" %>
   <div class="controls">
     <%= f.text_field :post_time, :placeholder => 'Select the Time to Post', 
     :class => "input-xlarge", :id => "date_time" %>
   </div>
 </div>
-<% if @linkedin.errors.any? %>
-<div id="error_explanation">
-  <h2><%= pluralize(@linkedin.errors.count, "error") %> prohibited this linkedin from being saved:</h2>
-  <ul>
-    <% @linkedin.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-    <% end %>
-  </ul>
-</div>
-<% end %>
 <div class="control-group">
   <div class="controls">
     <%= f.submit "Schedule", :class => "btn" %>
