@@ -1,5 +1,5 @@
 $(document).ready(function(){   
-    $('#date_time').datetimepicker({dateFormat : 'dd/mm/yyyy'});
+    $('#date_time').datetimepicker({dateFormat : 'dd/mm/yyyy',timepicker: true});
 
 });
 

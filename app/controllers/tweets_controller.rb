@@ -12,7 +12,7 @@ class TweetsController < ApplicationController
     @tweet = current_user.tweets.new(params[:tweet])
     respond_to do |format|
       if @tweet.save
-        TweetWorker.perform_at(@tweet.tweet_time,current_user.token,current_user.secret,@tweet.content)
+        #TweetWorker.perform_at(@tweet.tweet_time,current_user.token,current_user.secret,@tweet.content)
         format.js{}
         format.html{ redirect_to tweets_path}
       else
