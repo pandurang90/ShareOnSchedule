@@ -1,0 +1,2 @@
+$('#myModal').modal('hide');
+$('.table').append('<tr><td> <%= link_to "#{@tweet.content.truncate(100)}", tweet_path(@tweet)%></td><td><%=@tweet.tweet_time%></td></tr>')

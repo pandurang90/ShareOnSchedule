@@ -12,6 +12,7 @@ gem 'oauth'
 gem 'pry'
 gem 'jquery-rails'
 gem 'devise'
+gem 'sidekiq'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

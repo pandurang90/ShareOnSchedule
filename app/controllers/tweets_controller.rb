@@ -3,20 +3,18 @@ class TweetsController < ApplicationController
   def index
     @tweet=current_user.tweets.new
     @tweets=current_user.tweets
-  
   end
 
   def create
     @tweet=current_user.tweets.new(params[:tweet])
     respond_to do |format|
       if @tweet.save
+        TweetWorker.perform_at(@tweet.tweet_time,current_user.token,current_user.secret,@tweet.content)
         format.js{
-          render :json => {status: 'success', tweet: tweet }
         }
         format.html{ redirect_to tweets_path}
       else
         format.js {
-          render :json => {status: 'error', errors: @tweet.errors.full_messages.join(', ')}
         }        
         format.html{redirect_to tweets_path}
       end
@@ -25,6 +23,7 @@ class TweetsController < ApplicationController
 
   def show
     @tweet=current_user.tweets.find(params[:id])
+    #TweetMe.publish
   end
 
   def edit

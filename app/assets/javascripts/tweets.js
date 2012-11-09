@@ -1,5 +1,6 @@
 $(document).ready(function(){   
-    $('#date_time').datetimepicker();
+    $('#date_time').datetimepicker({dateFormat : 'dd/mm/yyyy'});
+
 });
 
 
@@ -9,21 +10,28 @@ $('.compose_new_tweet').click(function(event){
 });
 
 
-$('.container').delegate('.submit-button', 'submit', function(event){
+$('.container').delegate('.submit-btn', 'submit', function(event){
   event.preventDefault();
-  $('.container').find('.submit-button').disableButton('Saving...');
-    var ajaxOptions = {
-          url: $('.new-tweet-form').attr('action'),
-          type: 'post',
-          data: $('.new-tweet-form').serialize()
-        };
+  $('.container').find('.submit-btn').disableButton('Saving...');
+  
 
   $.ajax({
     url: $('.new-tweet-form').attr('action'),
     type: 'post',
     data: $('.new-tweet-form').serialize()
-        }).done(function(response) { 
-    $('#myModal').modal('hide') ;
+        }).done(function(response) {
+          if(response.status == 'success'){ 
+            $('#myModal').hide();
+          }
+
+          else{
+            var errorMessage = '<div class="alert alert-error error-message">' + response.errors + '</div>';
+            $('.new-tweet-form').before(errorMessage)  
+            window.setTimeout(function(){
+              $('.new-tweet-form').parent().find('.error-message').remove();
+            }, 5000);
+          }  
+
   });
 });
 
