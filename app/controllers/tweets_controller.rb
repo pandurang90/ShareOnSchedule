@@ -1,21 +1,22 @@
 class TweetsController < ApplicationController
-  #before_filter :authenticate_user!
+
+  before_filter :authenticate_user!
+
   def index
+
     @tweet=current_user.tweets.new
     @tweets=current_user.tweets
   end
 
   def create
-    @tweet=current_user.tweets.new(params[:tweet])
+    @tweet = current_user.tweets.new(params[:tweet])
     respond_to do |format|
       if @tweet.save
         TweetWorker.perform_at(@tweet.tweet_time,current_user.token,current_user.secret,@tweet.content)
-        format.js{
-        }
+        format.js{}
         format.html{ redirect_to tweets_path}
       else
-        format.js {
-        }        
+        format.js{}        
         format.html{redirect_to tweets_path}
       end
     end
@@ -35,9 +36,9 @@ class TweetsController < ApplicationController
   end
 
   def destroy
-    @tweet=current_user.tweets.find(params[:id])
+    @tweet = current_user.tweets.find(params[:id])
     @tweet.destroy
     redirect_to tweets_path
   end
-end
 
+end

@@ -1,17 +1,16 @@
-<a data-toggle="modal" href="#myModal">Compose a New Post To Share</a>
-<div class="form_linkedin" id="myModal">
+<a data-toggle="modal" href="#myModal" class="compose-new-share btn">Compose New Post To Share</a>
+<div class="modal hide fade in" id="myModal">
   <%=render "form" %>
 </div>
 <% content_for :sidebar do %>
-  <ul class="nav nav-list">
-    <li class="nav-header">Recent Posts</li>
-      <% @linkedins.each_with_index do |item| %>
-    <li>
-      <%= link_to "- #{item.share.truncate(100)}", linkedin_path(item) %>
-    </li>
-<% end %>    
-  <!-- <li>linkedin_path(item) ></li>
-  <li> linkedin_path(item) ></li>
-  <li> linkedin_path(item) ></li> -->
-</ul>
+  <% if @linkedins.size > 0 %>
+    <ul class="nav nav-list">
+      <li class="nav-header">Recent Posts</li>
+        <% @linkedins.each_with_index do |item| %>
+      <li>
+    <%= link_to "- #{item.share.truncate(100)}", linkedin_path(item) if item.id? %>
+      </li>
+      <% end %>    
+    </ul>
+  <% end %>
 <% end %>

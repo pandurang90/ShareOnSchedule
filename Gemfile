@@ -13,6 +13,7 @@ gem 'pry'
 gem 'jquery-rails'
 gem 'devise'
 gem 'sidekiq'
+gem 'koala'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
