@@ -1,5 +1,7 @@
 class LinkedinsController < ApplicationController
+  
   before_filter :authenticate_user!
+  
   def index
     @linkedin = current_user.linkedins.new
     @linkedins = current_user.linkedins
@@ -48,4 +50,5 @@ class LinkedinsController < ApplicationController
       @linkedin.destroy
         redirect_to linkedins_url
   end
+  
 end

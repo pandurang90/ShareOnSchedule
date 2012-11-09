@@ -1,8 +1,22 @@
 class TweetsController < ApplicationController
+
   before_filter :authenticate_user!
+
   def index
     @tweet = current_user.tweets.new
     @tweets = current_user.tweets 
+  end
+
+  def show
+    @tweet = current_user.tweets.find(params[:id])
+  end
+  
+  def new
+    @tweet = current_user.tweets.new
+  end
+
+  def edit
+    @tweet = current_user.tweets.find(params[:id])
   end
 
   def create
@@ -22,21 +36,10 @@ class TweetsController < ApplicationController
     end
   end
 
-  def show
-    @tweet = current_user.tweets.find(params[:id])
-  end
-
-  def edit
-    @tweet = current_user.tweets.find(params[:id])
-  end
-
-  def new
-    @tweet = current_user.tweets.new
-  end
-
   def destroy
     @tweet = current_user.tweets.find(params[:id])
     @tweet.destroy
     redirect_to tweets_path
   end
+
 end
