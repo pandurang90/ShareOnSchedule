@@ -1,17 +1,25 @@
 class TweetsController < ApplicationController
   #before_filter :authenticate_user!
   def index
-    #@tweets=current_user.tweets
-    @tweets=Tweet.all
-    @tweet=Tweet.new
+    @tweet=current_user.tweets.new
+    @tweets=current_user.tweets
+  
   end
 
   def create
-    @tweet=Tweet.new(params[:tweet])
-    if @tweet.save
-      redirect_to tweets_path
-    else
-      render "new"
+    @tweet=current_user.tweets.new(params[:tweet])
+    respond_to do |format|
+      if @tweet.save
+        format.js{
+          render :json => {status: 'success', tweet: tweet }
+        }
+        format.html{ redirect_to tweets_path}
+      else
+        format.js {
+          render :json => {status: 'error', errors: @tweet.errors.full_messages.join(', ')}
+        }        
+        format.html{redirect_to tweets_path}
+      end
     end
   end
 
@@ -32,5 +40,5 @@ class TweetsController < ApplicationController
     @tweet.destroy
     redirect_to tweets_path
   end
-  
 end
+
