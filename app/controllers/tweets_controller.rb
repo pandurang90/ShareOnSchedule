@@ -1,13 +1,12 @@
 class TweetsController < ApplicationController
-  #before_filter :authenticate_user!
+  before_filter :authenticate_user!
   def index
-    @tweet=current_user.tweets.new
-    @tweets=current_user.tweets
-  
+    @tweet = current_user.tweets.new
+    @tweets = current_user.tweets 
   end
 
   def create
-    @tweet=current_user.tweets.new(params[:tweet])
+    @tweet = current_user.tweets.new(params[:tweet])
     respond_to do |format|
       if @tweet.save
         format.js{
@@ -24,21 +23,20 @@ class TweetsController < ApplicationController
   end
 
   def show
-    @tweet=current_user.tweets.find(params[:id])
+    @tweet = current_user.tweets.find(params[:id])
   end
 
   def edit
-    @tweet=current_user.tweets.find(params[:id])
+    @tweet = current_user.tweets.find(params[:id])
   end
 
   def new
-    @tweet=current_user.tweets.new
+    @tweet = current_user.tweets.new
   end
 
   def destroy
-    @tweet=current_user.tweets.find(params[:id])
+    @tweet = current_user.tweets.find(params[:id])
     @tweet.destroy
     redirect_to tweets_path
   end
 end
-

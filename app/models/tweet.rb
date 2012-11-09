@@ -4,4 +4,3 @@ class Tweet < ActiveRecord::Base
   validates_presence_of :tweet_time
   belongs_to :user
 end
-
