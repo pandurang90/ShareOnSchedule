@@ -24,12 +24,12 @@ class TweetsController < ApplicationController
     respond_to do |format|
       if @tweet.save
         format.js{
-          render :json => {status: 'success', tweet: tweet }
+          render :json => { status: 'success', tweet: tweet }
         }
         format.html{ redirect_to tweets_path}
       else
         format.js {
-          render :json => {status: 'error', errors: @tweet.errors.full_messages.join(', ')}
+          render :json => { status: 'error', errors: @tweet.errors.full_messages.join(', ')}
         }        
         format.html{redirect_to tweets_path}
       end
