@@ -11,6 +11,7 @@ gem 'oauth'
 gem 'pry'
 gem 'jquery-rails'
 gem 'devise'
+gem 'koala'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'bootstrap-sass', '~> 2.1.1.0'
