@@ -5,10 +5,6 @@
   <%= stylesheet_link_tag "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  <script type="text/javascript" src="http://platform.linkedin.com/in.js">
-  api_key: 3k4b76isgyvi 
-  authorize: true
-  </script>
 </head>
 <body>
   <div class="container">
@@ -20,23 +16,26 @@
       &nbsp;
     </div>
     <div class="span3 sidebar">
-        <span>
-        <%=link_to "Sign In with Twitter", user_omniauth_authorize_path(:twitter),:class => "btn btn-primary twitter"%>
-        </span>
-        <div>&nbsp;</div>  
-        <%=link_to "Sign In with Facebook", user_omniauth_authorize_path(:facebook),:class => "btn btn-primary facebook"%>
-        <div>&nbsp;</div>  
-        <%=link_to "Sign In with LinkedIn", user_omniauth_authorize_path(:linkedin),:class => "btn btn-primary linkedin"%>
-        <div>&nbsp;</div>  
-        <%=link_to "Sign In or Create account", new_user_registration_path,
-        :class => "btn btn-primary signin"%>
-        <div>&nbsp;</div> 
-        <%=link_to "Sign In", new_user_session_path,
-        :class => "btn btn-primary signin"%>
+      <span>
+      <%=link_to "Sign In with Twitter", user_omniauth_authorize_path(:twitter),
+      :class => "btn btn-primary twitter"%>
+      </span>
+      <div>&nbsp;</div>  
+      <%=link_to "Sign In with Facebook", user_omniauth_authorize_path(:facebook),
+      :class => "btn btn-primary facebook"%>
+      <div>&nbsp;</div>  
+      <%=link_to "Sign In with LinkedIn", user_omniauth_authorize_path(:linkedin),
+      :class => "btn btn-primary linkedin"%>
+      <div>&nbsp;</div>  
+      <%=link_to "Sign In or Create account", new_user_registration_path,
+      :class => "btn btn-primary signin"%>
+      <div>&nbsp;</div> 
+      <%=link_to "Sign In", new_user_session_path,
+      :class => "btn btn-primary signin"%>
     </div>
-    </div><hr><%= render :partial => "shared/footer" %>
-    </div>
-
- 
+  </div>
+    <hr>
+    <%= render :partial => "shared/footer" %>
+  </div>
 </body>
 </html>

@@ -1,5 +1,6 @@
 ShareOnSchedule::Application.routes.draw do
-  root :to => 'welcome#index'
+  resources :linkedins
   resources :tweets
-  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}    
+  root :to => 'welcome#index'
+  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
 end

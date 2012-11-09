@@ -1,4 +1,4 @@
-// Place all the styles related to the tweets controller here.
+// Place all the styles related to the linkedins controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .datetime
@@ -6,11 +6,8 @@
   width : 100px;
 }
 
-.form_tweet
+.form_linkedin
 {
   border: solid 1px;
   border-color: #BDBDBD;
-}
-#ui-datepicker-div{
-  z-index:1060;
 }
