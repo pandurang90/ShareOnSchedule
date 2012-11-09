@@ -2,4 +2,4 @@ Getting Started
 
 Start the rails server with
 
-http://lvh.me:3000/
+http://lvh.me:3000
