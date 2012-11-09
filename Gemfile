@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+
 gem 'rails', '3.2.8'
 gem 'mysql2'
 gem 'twitter'
@@ -15,7 +16,6 @@ gem 'koala'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'bootstrap-sass', '~> 2.1.1.0'
-  # gem 'coffee-rails', '~> 3.2.1'
   gem 'font-awesome-sass-rails'
   gem 'therubyracer', :platforms => :ruby
   gem 'uglifier', '>= 1.0.3'

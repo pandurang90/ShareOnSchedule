@@ -1,8 +1,10 @@
 class LinkedinsController < ApplicationController
-#before_filter :authenticate_user!
+  
+  before_filter :authenticate_user!
+  
   def index
-    @linkedins = Linkedin.all
-    @linkedin = Linkedin.new
+    @linkedin = current_user.linkedins.new
+    @linkedins = current_user.linkedins
   end
 
   def show
@@ -18,21 +20,20 @@ class LinkedinsController < ApplicationController
   end
 
   def create
-    @linkedin = Linkedin.new(params[:linkedin])
+    @linkedin = current_user.linkedins.new(params[:linkedin])
+    respond_to do |format|
       if @linkedin.save
-        redirect_to linkedins_url
+        format.js{
+          render :json => { status: 'success', linkedin: linkedin }
+        }
+        format.html{ redirect_to linkedins_path}
       else
-        render "new"
+        format.js {
+          render :json => { status: 'error', errors: @linkedin.errors.full_messages.join(', ')}
+        }        
+        format.html{redirect_to linkedins_path}
       end
-  end
-
-  def update
-    current_user.linkedins.find(params[:id])
-      if @linkedin.update_attributes(params[:linkedin])
-        redirect_to linkedins_url
-      else
-        render "edit"
-      end
+    end
   end
 
   def destroy
@@ -40,4 +41,5 @@ class LinkedinsController < ApplicationController
       @linkedin.destroy
         redirect_to linkedins_url
   end
+  
 end
