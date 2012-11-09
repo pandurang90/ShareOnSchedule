@@ -1,11 +1,9 @@
-
-<%= form_for(@tweet, :html => { :class => 'form-horizontal new-tweet-form' } ) do |f| %> 
+<%= form_for(@tweet,:html=>{:class=>'form-horizontal new-tweet-form'}) do |f| %> 
   <div class="modal-header">  
     New Tweet
     <a class="close" data-dismiss="modal">×</a>  
   </div> 
   <div class="modal-body">  
-
     <div class="control-group">
       <%= f.label :content, "*Compose new tweet:", :class => "control-label"%>
       <div class="controls">
@@ -21,12 +19,9 @@
         :class => "input-xlarge", :id => "date_time" %>
       </div>
     </div>
-
-
   </div>
   <div class="modal-footer">  
   <%= f.submit "Tweet", class:'btn btn-success submit-btn' %> 
   <a href="#" class="btn" data-dismiss="modal">Close</a>  
   </div>  
-
 <% end %>

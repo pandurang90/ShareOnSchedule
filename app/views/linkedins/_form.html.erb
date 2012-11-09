@@ -1,21 +1,27 @@
 <%= form_for(@linkedin, :html => { :class => 'form-horizontal' }) do |f| %>
-<div class="control-group">
-  <%= f.label :share, "*Compose a new Post to Share:", :class => "control-label"%>
-  <div class="controls">
-    <%= f.text_area :share, :placeholder => 'Compose a new Post to Share...', 
-    :class => "input-xxlarge", :rows => 6 %>
+<div class="modal-header">  
+    New Post
+    <a class="close" data-dismiss="modal">×</a>  
+  </div> 
+  <div class="modal-body">  
+    <div class="control-group">
+    <%= f.label :share, "*Compose new Post to Share:",:class => "control-label"%>
+      <div class="controls">
+        <%= f.text_area :share, :placeholder => 'Compose new Post to Share....', 
+        :class => "input-xlarge", :rows => 6 %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :post_time, "Set Time :", :class => "control-label" %>
+      <div class="controls input-prepend">
+        <span class="add-on"><i class="icon-time"></i></span>
+        <%= f.text_field :post_time, :placeholder => 'Select Time to tweet', 
+        :class => "input-xlarge", :id => "date_time" %>
+      </div>
+    </div>
   </div>
-</div>
-<div class="control-group">
-<%= f.label :post_time, "Select the date and time :", :class => "control-label" %>
-  <div class="controls">
-    <%= f.text_field :post_time, :placeholder => 'Select the Time to Post', 
-    :class => "input-xlarge", :id => "date_time" %>
-  </div>
-</div>
-<div class="control-group">
-  <div class="controls">
-    <%= f.submit "Schedule", :class => "btn" %>
-  </div>
-</div>
+  <div class="modal-footer">  
+  <%= f.submit "Post a Share", class:'btn btn-success submit-btn' %> 
+  <a href="#" class="btn" data-dismiss="modal">Close</a>  
+  </div>  
 <% end %>
