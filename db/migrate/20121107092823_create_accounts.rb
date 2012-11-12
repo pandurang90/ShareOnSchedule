@@ -10,6 +10,6 @@ class CreateAccounts < ActiveRecord::Migration
 
     remove_column :users, :provider
     remove_column :users, :uid
-    remove_column :users, :token
+    #remove_column :users, :token
   end
 end

@@ -1,35 +1,30 @@
-
 <a data-toggle="modal" href="#myModal" class="compose-new-tweet btn pull-right">Compose new tweet</a>
-<div class="modal hide fade in" id="myModal"> <%=render "form", locals:{type: 'create',tweet: Tweet.new} %> </div>
+<div class="modal hide fade in" id="myModal"> <%=render :partial => "form", :locals => {:tweet => Tweet.new} %> </div>
 <br/>
-
 <hr>
+<%if @tweets.size > 0%>
   <table class="table table-striped">
     <tr>
       <td>Tweet</td>
       <td>Scheduled At</td>
       <td>Status</td>
       <td>Action</td>
-    
-
-    </tr>
-      <%if @tweets.size > 0%>
-        <% @tweets.each_with_index do |item| %>
-          <tr><td><%= link_to "#{item.content.truncate(100)}", tweet_path(item)%></td><td>
-          <%= item.tweet_time.to_formatted_s(:long) %></td><td></td>
-          <td><a data-toggle="modal" href=<%="#myModal_#{item.id}"%>  ><i class="icon-edit"></i></a>&nbsp;
-
-          <%=link_to "<i class='icon-remove'></i>".html_safe,tweet_path(item), :method => 
-          :delete %></a></td>
-          </tr>
-          <div class="modal hide fade in" id="myModal_<%=item.id%>"> <%=render "form", locals:{type: 'update',tweet: item}%> </div>
-        <% end %>  
-      <% end %>  
+    </tr>  
+    <% @tweets.each do |item| %>
+      <tr>
+        <td><%= link_to "#{item.content.truncate(100)}", tweet_path(item)%></td>
+        <td><%= item.tweet_time.to_formatted_s(:long) %></td>
+        <td><%= status(item) %></td>
+        <td>
+          <a data-toggle="modal" href=<%= "#myModal_#{item.id}" %>  ><i class="icon-edit"></i></a>&nbsp;
+          <%= link_to "<i class='icon-remove'></i>".html_safe,tweet_path(item), :method => :delete %></a>
+        </td>
+      </tr>
+          <div class="modal hide fade in" id="myModal_<%=item.id%>">
+           <%= render :partial => "form", :locals => {:tweet => item} %> </div>
+    <% end %>  
   </table>
-
+<% end %> 
 <% content_for :sidebar do %>
-      <%=render '/shared/accounts_connect'%>
+      <%= render '/shared/accounts_connect' %>
 <% end %>
-
-
-

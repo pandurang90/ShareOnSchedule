@@ -1,4 +1,3 @@
-
 <%= link_to "Connect with Twitter", user_omniauth_authorize_path(:twitter),
 :class => "btn btn-primary twitter" if !current_user.accounts.has_account("twitter").present? %>
 <div>&nbsp;</div>  
@@ -9,3 +8,4 @@
 
 <%= link_to "Connect with LinkedIn", user_omniauth_authorize_path(:linkedin),
 :class => "btn btn-primary linkedin" if !current_user.accounts.has_account("linkedin").present? %>
+<div>&nbsp;</div>

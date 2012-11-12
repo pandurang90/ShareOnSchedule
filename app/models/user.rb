@@ -9,11 +9,8 @@ class User < ActiveRecord::Base
   has_many :tweets
   has_many :linkedins
 
- 
-
   # Setup accessible (or protected) attributes for your model
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-
 end
