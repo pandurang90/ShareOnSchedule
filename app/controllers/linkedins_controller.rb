@@ -20,7 +20,7 @@ class LinkedinsController < ApplicationController
         # LinkedinWorker.perform_at(token,secret,verifier,@linkedin.share)
         @account = current_user.accounts.where(:provider => "linkedin").first
         time = Linkedin.where(:id => @linkedin.id).select("TIME_TO_SEC(TIME_TO_SEC(post_time)-TIME_TO_SEC(NOW())) as second").first.second
-        LinkedinWorker.perform_at(time.seconds.from_now,@account.oauth_token,@account.oauth_token_secret,@linkedin.share)
+        LinkedinWorker.perform_at(time.seconds.from_now,@account.oauth_token,@account.oauth_token_secret,@account.oauth_verifier,@linkedin.share)
         format.js{}
         format.html{ redirect_to linkedins_path }
       else
