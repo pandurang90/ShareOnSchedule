@@ -1,7 +1,7 @@
 class Account < ActiveRecord::Base
-  attr_accessible :provider, :user_id, :username, :uid, :oauth_token
-  validates_presence_of :username, :provider, :user_id, :uid, :oauth_token
-  validates_uniqueness_of :username, :uid, :provider, :oauth_token
+  attr_accessible :provider, :user_id, :username, :uid, :oauth_token, :oauth_secret
+  validates_presence_of :username, :provider, :user_id, :uid, :oauth_token, :oauth_secret
+  validates_uniqueness_of :username, :uid, :provider, :oauth_token, :oauth_secret
   belongs_to :user
 
 

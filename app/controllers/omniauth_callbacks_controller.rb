@@ -2,11 +2,17 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 	
 	def all
 		auth = request.env["omniauth.auth"]
+		binding.pry
 		if(current_user)
+			binding.pry
 			if(Account.find_by_provider_and_uid(auth['provider'], auth['uid']))
 				sign_in_and_redirect current_user
 			else
-				current_user.accounts.create(:username => auth['info']['nickname'], :uid => auth['uid'], :provider => auth['provider'], :oauth_token => auth['credentials']['token'])
+				current_user.accounts.create(:username => auth['info']['nickname'], 
+																		 :uid => auth['uid'], 
+																		 :provider => auth['provider'], 
+																		 :oauth_token => auth['credentials']['token'],
+																		 :oauth_secret => auth['credentials']['secret'])
 			
 				sign_in_and_redirect current_user
 			end
@@ -23,7 +29,8 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 					@account=@user.accounts.create(:username => auth['info']['nickname'],
 																				 :uid => auth['uid'],
 																				 :provider => auth['provider'],
-																				 :oauth_token => auth['credentials']['token'])
+																				 :oauth_token => auth['credentials']['token'],
+																				 :oauth_secret => auth['credentials']['secret'])
 				else
 					# Create new user and add account to his profile
 					@dummy_password = Devise.friendly_token[0,14]
@@ -34,7 +41,8 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 					@account=@user.accounts.create(:username => auth['info']['nickname'], 
 																				 :uid => auth['uid'], 
 																				 :provider => auth['provider'], 
-																				 :oauth_token => auth['credentials']['token'])
+																				 :oauth_token => auth['credentials']['token'],
+																				 :oauth_secret => auth['credentials']['secret'])
  				end	
 			end
 			current_user=@account.user
