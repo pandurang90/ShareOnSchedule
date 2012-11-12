@@ -9,3 +9,4 @@
 
 <%=link_to "Connect with LinkedIn", user_omniauth_authorize_path(:linkedin),
       :class => "btn btn-primary linkedin" if !current_user.accounts.has_account("linkedin").present?%>
+

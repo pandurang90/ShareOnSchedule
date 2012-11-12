@@ -3,3 +3,11 @@ Getting Started
 Start the rails server with
 
 http://lvh.me:3000
+
+Start the Sidekiq
+
+bundle exec sidekiq
+
+Start Redis
+
+src/redis-server

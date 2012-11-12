@@ -17,3 +17,6 @@
 //= require_tree .
 
 
+$(document).ready(function(){   
+    $('#date-time').datetimepicker();
+});
