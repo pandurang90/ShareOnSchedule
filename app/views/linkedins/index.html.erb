@@ -1,16 +1,28 @@
-<a data-toggle="modal" href="#myModal" class="compose-new-share btn">Compose New Post To Share</a>
-<div class="modal hide fade in" id="myModal">
-  <%=render "form" %>
-</div>
-<% content_for :sidebar do %>
-  <% if @linkedins.size > 0 %>
-    <ul class="nav nav-list">
-      <li class="nav-header">Recent Posts</li>
-        <% @linkedins.each_with_index do |item| %>
-      <li>
-    <%= link_to "- #{item.share.truncate(100)}", linkedin_path(item) if item.id? %>
-      </li>
-      <% end %>    
-    </ul>
-  <% end %>
+<%= form_for(@linkedin, :html => { :class => 'form-horizontal new-share-form' },
+:remote => true ) do |f| %> 
+  <div class="modal-header">  
+    New Share
+    <a class="close" data-dismiss="modal">×</a>  
+  </div> 
+  <div class="modal-body">  
+    <div class="control-group">
+      <%= f.label :share, "*Post a new Share:", :class => "control-label"%>
+      <div class="controls">
+        <%= f.text_area :share, :placeholder => 'Post a new Share....', 
+        :class => "input-xlarge", :rows => 6 %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :post_time, "Set Time :", :class => "control-label" %>
+      <div class="controls input-prepend">
+        <span class="add-on"><i class="icon-time"></i></span>
+        <%= f.text_field :post_time, :placeholder => 'Select Time to Post a Share',
+        :class => "input-xlarge", :id => "date_time" %>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">  
+  <%= f.submit "Linkedin Post a Share", class:'btn btn-success submit-btn' %> 
+  <a href="#" class="btn" data-dismiss="modal">Close</a>  
+  </div>  
 <% end %>
