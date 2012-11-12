@@ -15,4 +15,7 @@ class TweetMe
       ) 
     user.update(text)  
   end
+
+  def change_state()
+  end
 end

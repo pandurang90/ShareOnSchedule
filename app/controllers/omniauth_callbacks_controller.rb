@@ -1,9 +1,10 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
+
+
 	def all
 		auth = request.env["omniauth.auth"]
 		if current_user
 			if(Account.find_by_provider_and_uid(auth['provider'], auth['uid']))
-				binding.pry
 				sign_in_and_redirect current_user
 			else
 
@@ -16,7 +17,6 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 				sign_in_and_redirect current_user
 			end
 		else
-		binding.pry
 			# IF account is found
 			if(@account = Account.find_by_provider_and_uid(auth['provider'], auth['uid']))
 				#Add set current user is account user
@@ -92,4 +92,5 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 	end
 alias_method :twitter, :all # method over-riding
 alias_method :facebook, :all # method over-riding
+
 end
