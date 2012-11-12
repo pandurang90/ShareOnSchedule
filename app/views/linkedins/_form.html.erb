@@ -1,13 +1,13 @@
 <%= form_for(:linkedin, :html => { :class => 'form-horizontal new-share-form' },:remote => true ) do |f| %> 
   <div class="modal-header">  
-    New Tweet
+    New Share
     <a class="close" data-dismiss="modal">×</a>  
   </div> 
   <div class="modal-body">  
     <div class="control-group">
-      <%= f.label :share, "*Post new Share:", :class => "control-label"%>
+      <%= f.label :share, "*Post a New Share:", :class => "control-label"%>
       <div class="controls">
-        <%= f.text_area :share, :placeholder => 'Post a Share....', 
+        <%= f.text_area :share, :placeholder => 'Post a New Share....', 
         :class => "input-xlarge", :rows => 6 %>
       </div>
     </div>

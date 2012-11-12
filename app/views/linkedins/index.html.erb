@@ -1,28 +1,26 @@
-<%= form_for(@linkedin, :html => { :class => 'form-horizontal new-share-form' },
-:remote => true ) do |f| %> 
-  <div class="modal-header">  
-    New Share
-    <a class="close" data-dismiss="modal">×</a>  
-  </div> 
-  <div class="modal-body">  
-    <div class="control-group">
-      <%= f.label :share, "*Post a new Share:", :class => "control-label"%>
-      <div class="controls">
-        <%= f.text_area :share, :placeholder => 'Post a new Share....', 
-        :class => "input-xlarge", :rows => 6 %>
-      </div>
-    </div>
-    <div class="control-group">
-      <%= f.label :post_time, "Set Time :", :class => "control-label" %>
-      <div class="controls input-prepend">
-        <span class="add-on"><i class="icon-time"></i></span>
-        <%= f.text_field :post_time, :placeholder => 'Select Time to Post a Share',
-        :class => "input-xlarge", :id => "date_time" %>
-      </div>
-    </div>
-  </div>
-  <div class="modal-footer">  
-  <%= f.submit "Linkedin Post a Share", class:'btn btn-success submit-btn' %> 
-  <a href="#" class="btn" data-dismiss="modal">Close</a>  
-  </div>  
+<a data-toggle="modal" href="#myModal" class="post-new-share btn pull-right">Post a New Share</a>
+<div class="modal hide fade in" id="myModal"> <%= render "form", locals:{type: 'create',linkedin: Linkedin.new} %> </div>
+<br/>
+<hr>
+  <table class="table table-striped">
+    <tr>
+      <td>Linkedin</td>
+      <td>Scheduled At</td>
+      <td>Status</td>
+      <td>Action</td>
+    </tr>
+      <% if @linkedins.size > 0%>
+        <% @linkedins.each_with_index do |item| %>
+          <tr><td><%= link_to "#{item.share.truncate(100)}", linkedin_path(item) %></td><td>
+          <%= item.post_time.to_formatted_s(:long) %></td><td></td>
+          <td><a data-toggle="modal" href=<%="#myModal_#{item.id}"%>  ><i class="icon-edit"></i></a>&nbsp;
+          <%=link_to "<i class='icon-remove'></i>".html_safe,linkedin_path(item), 
+          :method => :delete %></a></td>
+          </tr>
+          <div class="modal hide fade in" id="myModal_<%=item.id%>"> <%=render "form", locals:{type: 'update',linkedin: item} %> </div>
+        <% end %>  
+      <% end %>  
+  </table>
+<% content_for :sidebar do %>
+      <%=render '/shared/accounts_connect'%>
 <% end %>
