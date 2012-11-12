@@ -14,6 +14,8 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'sidekiq'
 gem 'koala'
+gem 'sinatra', require: false
+gem 'slim'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
