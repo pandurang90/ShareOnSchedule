@@ -1,3 +1,6 @@
+<%if user_signed_in?%>
+<%=render 'shared/email' if current_user.email.blank? %>
+<%end%>
 <p class="lead">
 	Busy Schedule !!!!...??? 
 </p>

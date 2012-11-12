@@ -2,8 +2,8 @@ class TweetMe
   attr_accessor :token, :secret
   
   def initialize(token,secret)
-    @token=token
-    @secret=secret
+    @token = token
+    @secret = secret
   end
 
   def post(text)

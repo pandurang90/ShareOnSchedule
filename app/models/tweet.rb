@@ -8,7 +8,7 @@ class Tweet < ActiveRecord::Base
 
   protected
     def schedule_tweet
-      #TweetWorker.perform_at(tweet_time,current_user.oauth_token,current_user.oauth_secret,content)
+      #TweetWorker.perform_at(tweet_time,current_user.oauth_token,current_user.oauth_token_secret,content)
     end
 
 end

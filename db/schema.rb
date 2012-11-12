@@ -18,9 +18,11 @@ ActiveRecord::Schema.define(:version => 20121112060756) do
     t.string   "provider"
     t.string   "username"
     t.string   "uid"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.string   "oauth_token"
+    t.string   "oauth_token_secret"
+    t.string   "oauth_verifier"
   end
 
   create_table "linkedins", :force => true do |t|
@@ -53,6 +55,7 @@ ActiveRecord::Schema.define(:version => 20121112060756) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "token"
     t.string   "username"
   end
 

@@ -1,0 +1,2 @@
+$('#myModal').modal('hide');
+$('.table').append('<tr><td> <%= link_to "#{@linkedin.share.truncate(100)}", linkedin_path(@linkedin)%></td><td><%=@linkedin.post_time%></td></tr>')

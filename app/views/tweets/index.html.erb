@@ -1,6 +1,6 @@
 
 <a data-toggle="modal" href="#myModal" class="compose-new-tweet btn pull-right">Compose new tweet</a>
-<div class="modal hide fade in" id="myModal"> <%=render "form", locals:{type: 'create',:tweet => Tweet.new} %> </div>
+<div class="modal hide fade in" id="myModal"> <%=render :partial => "form", :locals => {:tweet => Tweet.new} %> </div>
 <br/>
 
 <hr>
@@ -12,7 +12,7 @@
       <td>Status</td>
       <td>Action</td>
     </tr>  
-    <% @tweets.each_with_index do |item| %>
+    <% @tweets.each do |item| %>
       <tr>
         <td><%= link_to "#{item.content.truncate(100)}", tweet_path(item)%></td>
         <td><%= item.tweet_time.to_formatted_s(:long) %></td>
@@ -23,13 +23,14 @@
         </td>
       </tr>
           <div class="modal hide fade in" id="myModal_<%=item.id%>">
-           <%=render "form", locals:{type: 'update',:tweet => item}%> </div>
+           <%=render :partial => "form", :locals => {:tweet => item}%> </div>
     <% end %>  
   </table>
 <% end %> 
 <% content_for :sidebar do %>
       <%=render '/shared/accounts_connect'%>
 <% end %>
+
 
 
 
