@@ -17,7 +17,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 				
 			else
 				# Find out user is present(may be sign up with devise or already present is system)
-				@user =User.find_by_email( auth['info']['email'])
+				@user =User.find_by_email(auth['info']['email'])
 				if @user.present?
 					# Then add accounts to user profile
 					@account=@user.accounts.create(:username => auth['info']['nickname'],
@@ -29,8 +29,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 					@dummy_password = Devise.friendly_token[0,20]
 					@user = User.create(:password => @dummy_password,
 															:password_confirmation => @dummy_password, 
-															:email => @email)
-
+															:email => auth['info']['email'])
 					@user.save!
 					@account=@user.accounts.create(:username => auth['info']['nickname'], 
 																				 :uid => auth['uid'], 
