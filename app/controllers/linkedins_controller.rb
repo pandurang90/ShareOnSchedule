@@ -56,10 +56,10 @@ class LinkedinsController < ApplicationController
         #verifier = linkedin_provider.oauth_verifier
         #LinkedinWorker.perform(token,secret,verifier,@linkedin.share)
         format.js{}
-        format.html{ redirect_to tweets_path}
+        format.html{ redirect_to linkedins_path}
       else
         format.js{}        
-        format.html{redirect_to tweets_path}
+        format.html{redirect_to linkedins_path}
       end
     end
   end
