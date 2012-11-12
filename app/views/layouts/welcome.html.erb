@@ -16,6 +16,7 @@
       &nbsp;
     </div>
     <div class="span3 sidebar">
+      <%= render '/shared/accounts_connect' if current_user.present?%>
       <% unless user_signed_in? %>
       <span>
       <%=link_to "Sign In with Twitter", user_omniauth_authorize_path(:twitter),
@@ -34,6 +35,7 @@
       <%=link_to "Sign In", new_user_session_path,
       :class => "btn btn-primary signin"%>
       <% end %>
+
     </div>
   </div>
     <hr>

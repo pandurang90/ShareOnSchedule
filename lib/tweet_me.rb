@@ -1,11 +1,18 @@
 class TweetMe
-  def publish(user,tweet)
-  user = Twitter::Client.new(
-    :consumer_key => TWITTER_CONSUMER_KEY,
-    :consumer_secret => TWITTER_CONSUMER_SECRET,
-    :oauth_token => user.oauth_token,
-    :oauth_token_secret => user.oauth_token_secret
-    )    
-    user.update(tweet)  
+  attr_accessor :token, :secret
+  
+  def initialize(token,secret)
+    @token=token
+    @secret=secret
+  end
+
+  def post(text)
+    user = Twitter::Client.new(
+      :consumer_key => "2lPup6YS8TaC9WKNOwj0g",
+      :consumer_secret => "YiNbL9ossS70oZCNNvqKbz4oi2zE4ugfO5fdI9J6A0",
+      :oauth_token => @token,
+      :oauth_token_secret => @secret
+      ) 
+    user.update(text)  
   end
 end

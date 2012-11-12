@@ -1,16 +1,35 @@
-<a data-toggle="modal" href="#myModal" class="compose-new-tweet btn">Compose New Tweet</a>
-<div class="modal hide fade in" id="myModal">
-	<%= render "form" %>
-</div>
+
+<a data-toggle="modal" href="#myModal" class="compose-new-tweet btn pull-right">Compose new tweet</a>
+<div class="modal hide fade in" id="myModal"> <%=render "form", locals:{type: 'create',tweet: Tweet.new} %> </div>
+<br/>
+
+<hr>
+  <table class="table table-striped">
+    <tr>
+      <td>Tweet</td>
+      <td>Scheduled At</td>
+      <td>Status</td>
+      <td>Action</td>
+    
+
+    </tr>
+      <%if @tweets.size > 0%>
+        <% @tweets.each_with_index do |item| %>
+          <tr><td><%= link_to "#{item.content.truncate(100)}", tweet_path(item)%></td><td>
+          <%= item.tweet_time.to_formatted_s(:long) %></td><td></td>
+          <td><a data-toggle="modal" href=<%="#myModal_#{item.id}"%>  ><i class="icon-edit"></i></a>&nbsp;
+
+          <%=link_to "<i class='icon-remove'></i>".html_safe,tweet_path(item), :method => 
+          :delete %></a></td>
+          </tr>
+          <div class="modal hide fade in" id="myModal_<%=item.id%>"> <%=render "form", locals:{type: 'update',tweet: item}%> </div>
+        <% end %>  
+      <% end %>  
+  </table>
+
 <% content_for :sidebar do %>
-  <% if @tweets.size > 0 %>
-    <ul class="nav nav-list">
-      <li class="nav-header">Recent tweets</li>
-    	<% @tweets.each_with_index do |item| %>
-  		<li>
-  	<%= link_to "- #{item.content.truncate(100)}", tweet_path(item) if item.id? %>
-			</li>
-    	<% end %>    
-    </ul>
-  <% end %>
+      <%=render '/shared/accounts_connect'%>
 <% end %>
+
+
+

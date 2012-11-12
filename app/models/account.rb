@@ -9,4 +9,9 @@ class Account < ActiveRecord::Base
   	@post = Koala::Facebook::API.new(oauth_token)
   	@post.put_wall_post("hello!")
   end
+
+  def self.has_account(provider)
+    where(:provider => provider).first
+  end
+
 end
