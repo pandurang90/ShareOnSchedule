@@ -1,16 +1,26 @@
-<a data-toggle="modal" href="#myModal" class="compose-new-share btn">Compose New Post To Share</a>
-<div class="modal hide fade in" id="myModal">
-  <%=render "form" %>
-</div>
-<% content_for :sidebar do %>
-  <% if @linkedins.size > 0 %>
-    <ul class="nav nav-list">
-      <li class="nav-header">Recent Posts</li>
+<a data-toggle="modal" href="#myModal" class="post-new-share btn pull-right">Post a New Share</a>
+<div class="modal hide fade in" id="myModal"> <%= render "form", locals:{type: 'create',linkedin: Linkedin.new} %> </div>
+<br/>
+<hr>
+  <table class="table table-striped">
+    <tr>
+      <td>Linkedin</td>
+      <td>Scheduled At</td>
+      <td>Status</td>
+      <td>Action</td>
+    </tr>
+      <% if @linkedins.size > 0%>
         <% @linkedins.each_with_index do |item| %>
-      <li>
-    <%= link_to "- #{item.share.truncate(100)}", linkedin_path(item) if item.id? %>
-      </li>
-      <% end %>    
-    </ul>
-  <% end %>
+          <tr><td><%= link_to "#{item.share.truncate(100)}", linkedin_path(item) %></td><td>
+          <%= item.post_time.to_formatted_s(:long) %></td><td></td>
+          <td><a data-toggle="modal" href=<%="#myModal_#{item.id}"%>  ><i class="icon-edit"></i></a>&nbsp;
+          <%=link_to "<i class='icon-remove'></i>".html_safe,linkedin_path(item), 
+          :method => :delete %></a></td>
+          </tr>
+          <div class="modal hide fade in" id="myModal_<%=item.id%>"> <%=render "form", locals:{type: 'update',linkedin: item} %> </div>
+        <% end %>  
+      <% end %>  
+  </table>
+<% content_for :sidebar do %>
+      <%=render '/shared/accounts_connect'%>
 <% end %>

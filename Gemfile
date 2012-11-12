@@ -10,6 +10,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'oauth'
 gem 'pry'
+gem 'ruby-debug19',:require => "ruby-debug"
 gem 'jquery-rails'
 gem 'devise'
 gem 'sidekiq'
