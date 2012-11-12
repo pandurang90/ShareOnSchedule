@@ -3,9 +3,7 @@ class TweetsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-
-    @tweet=current_user.tweets.new
-    @tweets=current_user.tweets
+    @tweets = current_user.tweets
   end
 
   def create
@@ -23,16 +21,12 @@ class TweetsController < ApplicationController
   end
 
   def show
-    @tweet=current_user.tweets.find(params[:id])
+    @tweet = current_user.tweets.find(params[:id])
     #TweetMe.publish
   end
 
-  def edit
-    @tweet=current_user.tweets.find(params[:id])
-  end
-
   def new
-    @tweet=current_user.tweets.new
+    @tweet = current_user.tweets.new
   end
 
   def destroy
@@ -41,4 +35,17 @@ class TweetsController < ApplicationController
     redirect_to tweets_path
   end
 
+  def update
+    @tweet = current_user.tweets.find(params[:id])
+    respond_to do |format|
+      if @tweet.update_attributes(params[:tweet])
+        #TweetWorker.perform_at(@tweet.tweet_time,current_user.token,current_user.secret,@tweet.content)
+        format.js{}
+        format.html{ redirect_to tweets_path}
+      else
+        format.js{}        
+        format.html{redirect_to tweets_path}
+      end
+    end
+  end
 end

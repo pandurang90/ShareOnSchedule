@@ -160,7 +160,7 @@ Devise.setup do |config|
   # Time interval you can reset your password with a reset password key.
   # Don't put a too small interval or your users won't have the time to
   # change their passwords.
-  config.reset_password_within = 6.hours
+  # config.reset_password_within = 6.hours
 
   # ==> Configuration for :encryptable
   # Allow you to use another encryption algorithm besides bcrypt (default). You can use
@@ -168,11 +168,11 @@ Devise.setup do |config|
   # :authlogic_sha512 (then you should set stretches above to 20 for default behavior)
   # and :restful_authentication_sha1 (then you should set stretches to 10, and copy
   # REST_AUTH_SITE_KEY to pepper)
-  #config.encryptor = :sha512
+  # config.encryptor = :sha512
 
   # ==> Configuration for :token_authenticatable
   # Defines name of the authentication token params key
-  #config.token_authentication_key = :auth_token
+  # config.token_authentication_key = :auth_token
 
   # ==> Scopes configuration
   # Turn scoped views on. Before rendering "sessions/new", it will first check for
@@ -208,7 +208,7 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
   config.omniauth :facebook, '194409730684271', 'eab9412a456d543b73f4697df81afd8b', scope: "offline_access, manage_pages, publish_stream,email,user_groups,friends_groups,read_insights,user_birthday,friends_birthday"
   config.omniauth :twitter,  '2lPup6YS8TaC9WKNOwj0g', 'YiNbL9ossS70oZCNNvqKbz4oi2zE4ugfO5fdI9J6A0'
-  config.omniauth :linkedin, '3k4b76isgyvi', 'vRAIHUmoyd4wDkJl', :scope => 'r_fullprofile r_emailaddress rw_nus r_network',:fields => ["id", "email-address", "first-name", "last-name", "headline", "industry", "picture-url", "public-profile-url", "location", "connections"]
+  config.omniauth :linkedin, '3k4b76isgyvi', 'vRAIHUmoyd4wDkJl', :scope => 'r_fullprofile r_emailaddress r_network rw_nus', :fields => ["id", "email-address", "first-name", "last-name", "headline", "industry", "picture-url", "public-profile-url", "location", "connections"]
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.

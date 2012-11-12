@@ -1,13 +1,13 @@
-<%= form_for(@linkedin, :html => { :class => 'form-horizontal' }) do |f| %>
-<div class="modal-header">  
-    New Post
+<%= form_for(:linkedin, :html => { :class => 'form-horizontal new-share-form' },:remote => true ) do |f| %> 
+  <div class="modal-header">  
+    New Tweet
     <a class="close" data-dismiss="modal">×</a>  
   </div> 
   <div class="modal-body">  
     <div class="control-group">
-    <%= f.label :share, "*Compose new Post to Share:",:class => "control-label"%>
+      <%= f.label :share, "*Post new Share:", :class => "control-label"%>
       <div class="controls">
-        <%= f.text_area :share, :placeholder => 'Compose new Post to Share....', 
+        <%= f.text_area :share, :placeholder => 'Post a Share....', 
         :class => "input-xlarge", :rows => 6 %>
       </div>
     </div>
@@ -16,12 +16,12 @@
       <div class="controls input-prepend">
         <span class="add-on"><i class="icon-time"></i></span>
         <%= f.text_field :post_time, :placeholder => 'Select Time to Post a Share', 
-        :class => "input-xlarge", :id => "date_time" %>
+        :class => "input-xlarge", :id => "date-time" %>
       </div>
     </div>
   </div>
   <div class="modal-footer">  
-  <%= f.submit "Post a Share", class:'btn btn-success submit-btn' %> 
+  <%= f.submit "Linkedin", class:'btn btn-success submit-btn' %> 
   <a href="#" class="btn" data-dismiss="modal">Close</a>  
   </div>  
 <% end %>

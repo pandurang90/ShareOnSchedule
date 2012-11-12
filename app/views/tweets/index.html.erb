@@ -1,7 +1,8 @@
 
 <a data-toggle="modal" href="#myModal" class="compose-new-tweet btn pull-right">Compose new tweet</a>
-<div class="modal hide fade in" id="myModal"> <%=render "form" %> </div>
+<div class="modal hide fade in" id="myModal"> <%=render "form", locals:{type: 'create',tweet: Tweet.new} %> </div>
 <br/>
+
 <hr>
   <table class="table table-striped">
     <tr>
@@ -14,28 +15,20 @@
     </tr>
       <%if @tweets.size > 0%>
         <% @tweets.each_with_index do |item| %>
-          <% if item.id?%>
           <tr><td><%= link_to "#{item.content.truncate(100)}", tweet_path(item)%></td><td>
           <%= item.tweet_time.to_formatted_s(:long) %></td><td></td>
-          <td><a href=<%=edit_tweet_path(item) %> ><i class="icon-edit"></i></a>&nbsp;
+          <td><a data-toggle="modal" href=<%="#myModal_#{item.id}"%>  ><i class="icon-edit"></i></a>&nbsp;
+
           <%=link_to "<i class='icon-remove'></i>".html_safe,tweet_path(item), :method => 
           :delete %></a></td>
           </tr>
-          <%end%>
+          <div class="modal hide fade in" id="myModal_<%=item.id%>"> <%=render "form", locals:{type: 'update',tweet: item}%> </div>
         <% end %>  
       <% end %>  
   </table>
 
 <% content_for :sidebar do %>
-      <%=link_to "Connect with Twitter", user_omniauth_authorize_path(:twitter),
-      :class => "btn btn-primary twitter" if !current_user.accounts.has_account("twitter")%>
-      <div>&nbsp;</div>  
-      <%=link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook),
-      :class => "btn btn-primary facebook" if !current_user.accounts.has_account("facebook")%>
-      <div>&nbsp;</div>  
-      <%=link_to "Connect with LinkedIn", user_omniauth_authorize_path(:linkedin),
-      :class => "btn btn-primary linkedin" if !current_user.accounts.has_account("linkendin")%>
-
+      <%=render '/shared/accounts_connect'%>
 <% end %>
 
 
