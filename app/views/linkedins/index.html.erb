@@ -1,7 +1,9 @@
 <a data-toggle="modal" href="#myModal" class="post-new-share btn pull-right">Post a New Share</a>
-<div class="modal hide fade in" id="myModal"> <%= render "form", locals:{type: 'create',linkedin: Linkedin.new} %> </div>
+<div class="modal hide fade in" id="myModal"><%=render :partial =>"form",:locals => {:linkedin => Linkedin.new}%>
+</div>
 <br/>
 <hr>
+<% if @linkedins.size > 0 %>
   <table class="table table-striped">
     <tr>
       <td>Linkedin</td>
@@ -9,19 +11,21 @@
       <td>Status</td>
       <td>Action</td>
     </tr>
-      <% if @linkedins.size > 0 %>
-        <% @linkedins.each_with_index do |item| %>
-          <tr><td><%= link_to "#{item.share.truncate(100)}", linkedin_path(item) %></td><td>
-          <%= item.post_time.to_formatted_s(:long) %></td><td></td>
+        <% @linkedins.each do |item| %>
+          <tr>
+            <td><%= link_to "#{item.share.truncate(100)}", linkedin_path(item) %></td>
+            <td><%= item.post_time.to_formatted_s(:long) %></td>
+            <td><%= status(item) %></td>
           <td><a data-toggle="modal" href=<%="#myModal_#{item.id}"%>  ><i class="icon-edit"></i></a>&nbsp;
           <%= link_to "<i class='icon-remove'></i>".html_safe,linkedin_path(item), 
           :method => :delete %></a></td>
           </tr>
-          <div class="modal hide fade in" id="myModal_<%=item.id%>"> <%=render "form", 
-          locals:{type: 'update',linkedin: item} %> </div>
-        <% end %>  
-      <% end %>  
+          <div class="modal hide fade in" id="myModal_<%=item.id%>"> 
+            <%=render :partial => "form", :locals => {:linkedin => item} %> 
+       </div>
+    <% end %>  
   </table>
+<% end %> 
 <% content_for :sidebar do %>
   <%= render '/shared/accounts_connect' %>
 <% end %>

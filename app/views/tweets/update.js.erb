@@ -1,7 +1,6 @@
-
-<%if @tweet.content.present? || @tweet.tweet_time.present?%>
+<% if @tweet.content.present? || @tweet.tweet_time.present? %>
 $("#myModal_<%=@tweet.id%>").find('.modal-header').prepend("<div class='alert alert-error error-message'><%=@tweet.errors.full_messages.join(", ")%></div>")
   //$('.table').append('<tr><td> <%= link_to "#{@tweet.content.truncate(100)}", tweet_path(@tweet)%></td><td><%=@tweet.tweet_time.to_formatted_s(:long)%></td></tr>')
-<%else%>
+<% else %>
     $("#myModal_<%=@tweet.id%>").modal('hide');
-<%end%>
+<% end %>

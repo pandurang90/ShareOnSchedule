@@ -1,5 +1,7 @@
 <% if @linkedin.id.present? %>
   $('#myModal').modal('hide');
+  $('.new-share-form .modal-body textarea').val(" ");
+  $('.new-share-form .modal-body .hasDatetimepicker').val(" ");
   $('.table').append('<tr><td> <%= link_to "#{@linkedin.share.truncate(100)}", linkedin_path(@linkedin) %></td><td><%=@linkedin.post_time.to_formatted_s(:long) %></td></tr>')
 <% else %>
   $('#myModal').find('.modal-header').prepend("<div class='alert alert-error error-message'><%=@linkedin.errors.full_messages.join(", ")%></div>")
