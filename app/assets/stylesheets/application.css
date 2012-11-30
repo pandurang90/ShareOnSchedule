@@ -30,3 +30,5 @@
 {
   background-color: #00ACED;
 }
+body{background:url(/assets/debut_light.png);background-size:100% 100%;}
+.span8,.span3{background-color: white;padding: 10px 10px;border-radius: 4px;}

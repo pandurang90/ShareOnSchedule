@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121112134541) do
+ActiveRecord::Schema.define(:version => 20121124121535) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(:version => 20121112134541) do
     t.string   "oauth_token"
     t.string   "oauth_token_secret"
     t.string   "oauth_verifier"
+  end
+
+  create_table "fb_posts", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "content"
+    t.datetime "post_time"
+    t.boolean  "is_posted"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "linkedins", :force => true do |t|
@@ -56,6 +65,7 @@ ActiveRecord::Schema.define(:version => 20121112134541) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "token"
     t.string   "username"
   end
 

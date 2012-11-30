@@ -1,96 +1,67 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
-
 	def all
 		auth = request.env["omniauth.auth"]
-		if current_user
-			if(Account.find_by_provider_and_uid(auth['provider'], auth['uid']))
-				sign_in_and_redirect current_user
+		@account=Account.find_by_provider_and_uid(auth['provider'], auth['uid'])
+		#if account is present
+		#binding.pry
+		if @account	
+			if check_user
+				update_oauth_params(auth,@account)
+				redirect_to root_path
 			else
+				current_user=@account.user		
+				update_oauth_params(auth,@account)
+				sign_in_and_redirect current_user
+			end
+			#update_oauth_params(auth,@account)
+		else
+			# IF account not found
+			if check_user
+				create_account(auth)
+				redirect_to root_path
+			else
+				@name=get_name(auth)
+				@dummy_password = get_devise_token
+				@user=User.create(:username=>@name,:password=> @dummy_password,:password_confirmation=>@dummy_password)
+				current_user = @user
+				create_account(auth)
+				sign_in_and_redirect current_user
+			end
+		end
 
-				@account = current_user.accounts.create(:username => auth['info']['nickname'], 
+	end
+
+
+# method over-riding
+alias_method :twitter, :all 
+alias_method :facebook, :all 
+alias_method :linkedin, :all
+
+
+  def check_user
+  	current_user
+  end
+
+	def create_account(auth)
+		@name=auth['info']['nickname'] || auth['info']['name'] || auth['info']['username']
+		@verifier=params['oauth_verifier'] || get_devise_token
+		@secret=auth['credentials']['secret'] || get_devise_token
+		@account = current_user.accounts.create(:username => @name, 
 																		 :uid => auth['uid'], 
 																		 :provider => auth['provider'], 
 																		 :oauth_token => auth['credentials']['token'],
-																		 :oauth_token_secret => auth['credentials']['secret'])
-			  			
-				sign_in_and_redirect current_user
-			end
-		else
-			# IF account is found
-			if(@account = Account.find_by_provider_and_uid(auth['provider'], auth['uid']))
-				#Add set current user is account user
-			else
+																		 :oauth_token_secret => @secret,
+																		 :oauth_verifier => @verifier)
 
-				# Find out user is present(may be sign up with devise or already present is system)
-				@user =User.find_by_email(auth['info']['email'])
-				if @user.present?
-
-					# Then add accounts to user profile
-					@account = @user.accounts.create(:username => auth['info']['nickname'],
-																					 :uid => auth['uid'],
-																					 :provider => auth['provider'],
-																					 :oauth_token => auth['credentials']['token'],
-																					 :oauth_token_secret => auth['credentials']['secret'])
-				else
-					# Create new user and add account to his profile
-					@dummy_password = Devise.friendly_token[0,14]
-					@user = User.create(:password => @dummy_password,
-															:password_confirmation => @dummy_password, 
-															:email => auth['info']['email'])
-					@user.save!
-					@account = @user.accounts.create(:username => auth['info']['nickname'], 
-																					 :uid => auth['uid'], 
-																					 :provider => auth['provider'], 
-																					 :oauth_token => auth['credentials']['token'],
-																					 :oauth_token_secret => auth['credentials']['secret'])
- 				end	
-			end
-			current_user = @account.user
-			sign_in_and_redirect current_user
-		end
 	end
 
-  def linkedin
-	 	auth = request.env["omniauth.auth"]
-	 	if(current_user)
-	 		if(Account.find_by_provider_and_uid(auth['provider'], auth['uid']))
-	 		else
-	 			current_user.accounts.create(:username => auth['username'], :uid => auth['uid'], :provider => auth['provider'])
-	 		end
-	 	else
-	 		if(@account = Account.find_by_provider_and_uid(auth['provider'], auth['uid']))
-	 			current_user = @account.user
-	 		else
-	 			@user = User.find_by_email(auth['info']['email'])
-	 			if @user.present?
-					# Then add accounts to user profile
-					@account = @user.accounts.create(:username => auth['info']['name'],
-																				 :uid => auth['uid'],
-																				 :provider => auth['provider'],
-																				 :oauth_token => auth['credentials']['token'],
-																				 :oauth_token_secret => auth['credentials']['secret'],
-																				 :oauth_verifier => params['oauth_verifier'])
-				else
-					# Create new user and add account to his profile
-					@dummy_password = Devise.friendly_token[0,20]
-					@user = User.create(:password => @dummy_password,
-															:password_confirmation => @dummy_password, 
-															:email => auth['info']['email'])
-				
-					@account = @user.accounts.create!(:username => auth['info']['name'], 
-																				 :uid => auth['uid'], 
-																				 :provider => auth['provider'], 
-																				 :oauth_token => auth['credentials']['token'],
-																				 :oauth_token_secret => auth['credentials']['secret'],
-																				 :oauth_verifier => params['oauth_verifier'])
- 				end	
- 			end	
-	 	end
-    current_user = @account.user
-		sign_in_and_redirect current_user
+	def update_oauth_params(auth,account)
+		@verifier=params['oauth_verifier'] || get_devise_token
+		@secret=auth['credentials']['secret'] || get_devise_token
+		account.update_attributes(:oauth_token=> auth['credentials']['token'],
+															:oauth_token_secret=> @secret,
+															:oauth_verifier=>@verifier)
 	end
-alias_method :twitter, :all # method over-riding
-alias_method :facebook, :all # method over-riding
 
 end

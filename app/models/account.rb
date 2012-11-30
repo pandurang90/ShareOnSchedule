@@ -7,8 +7,9 @@ class Account < ActiveRecord::Base
   belongs_to :user
 
   def checking_provider?
-  	provider == 'facebook'
+  	provider == 'facebook' || provider == 'linkedin'
   end
+  
   def facebook_post
   	@post = Koala::Facebook::API.new(oauth_token)
   	@post.put_wall_post("hello!")

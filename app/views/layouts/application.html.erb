@@ -11,13 +11,16 @@
   <%= render :partial => "shared/header" %>
   <div>&nbsp;</div>
   <div class="row">
-    <div class="span9">
+    <div class="span8">
       <%= yield %>
       &nbsp;
     </div>
+    <div class="span">&nbsp;</div>
     <div class="span3 sidebar">
         <%= yield :sidebar %>
+         <%= render '/shared/about' %>
     </div>
+    
   </div>
   <hr/>
 </div>

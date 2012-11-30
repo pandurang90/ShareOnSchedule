@@ -1,0 +1,31 @@
+<a data-toggle="modal" href="#myModal" class="compose-new-post btn pull-right">Compose new post</a>
+<div class="modal hide fade in" id="myModal"> <%=render :partial => "form", :locals => {:post => FbPost.new} %> </div>
+<br/>
+<hr>
+<%if @fb_posts.size > 0%>
+  <table class="table table-striped">
+    <tr>
+      <td>Post</td>
+      <td>Scheduled At</td>
+      <td>Status</td>
+      <td>Action</td>
+    </tr>  
+    <% @fb_posts.each do |item| %>
+      <tr>
+        <td><%= link_to "#{item.content.truncate(100)}", fb_post_path(item)%></td>
+        <td><%= item.post_time.to_formatted_s(:long) %></td>
+        <td><%= post_status(item) %></td>
+        <td>
+          <a data-toggle="modal" href=<%= "#myModal_#{item.id}" %>  ><i class="icon-edit"></i></a>&nbsp;
+          <%= link_to "<i class='icon-remove'></i>".html_safe,fb_post_path(item), :method => :delete %></a>
+        </td>
+      </tr>
+
+          <div class="modal hide fade in" id="myModal_<%=item.id%>">
+           <%= render :partial => "form", :locals => {:post => item} %> </div>
+    <% end %>  
+  </table>
+<% end %> 
+<% content_for :sidebar do %>
+      <%= render '/shared/accounts_connect' %>
+<% end %>

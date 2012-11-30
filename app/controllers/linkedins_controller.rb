@@ -13,11 +13,6 @@ class LinkedinsController < ApplicationController
     @linkedin = current_user.linkedins.new(params[:linkedin])
     respond_to do |format|
       if @linkedin.save
-        # linkedin_provider = current_user.accounts.find_by_provider('linkedin')
-        # token = linkedin_provider.oauth_token
-        # secret = linkedin_provider.oauth_token_secret
-        # verifier = linkedin_provider.oauth_verifier
-        # LinkedinWorker.perform_at(token,secret,verifier,@linkedin.share)
         @account = current_user.accounts.where(:provider => "linkedin").first
         time = Linkedin.where(:id => @linkedin.id).select("TIME_TO_SEC(TIME_TO_SEC(post_time)-TIME_TO_SEC(NOW())) as second").first.second
         LinkedinWorker.perform_at(time.seconds.from_now,@account.oauth_token,@account.oauth_token_secret,@linkedin.share)

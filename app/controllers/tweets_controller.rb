@@ -12,7 +12,7 @@ class TweetsController < ApplicationController
       if @tweet.save
         @account = current_user.accounts.where(:provider => "twitter").first
         time = Tweet.where(:id => @tweet.id).select("TIME_TO_SEC(TIME_TO_SEC(tweet_time)-TIME_TO_SEC(NOW())) as second").first.second
-        TweetWorker.perform_at(time.seconds.from_now,@account.oauth_token,@account.oauth_token_secret,@tweet.content)
+        TweetWorker.perform_at(time.seconds.from_now,@account.oauth_token,@account.oauth_token_secret,@tweet.id)
         format.js{}
         format.html{ redirect_to tweets_path }
       else
@@ -24,7 +24,6 @@ class TweetsController < ApplicationController
 
   def show
     @tweet = current_user.tweets.find(params[:id])
-    #TweetMe.publish
   end
 
   def new

@@ -8,6 +8,11 @@ class User < ActiveRecord::Base
   has_many :accounts
   has_many :tweets
   has_many :linkedins
+  has_many :fb_posts
+
+  def email_required?
+    false
+  end
 
   # Setup accessible (or protected) attributes for your model
   # Include default devise modules. Others available are:
