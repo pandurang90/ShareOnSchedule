@@ -15,13 +15,13 @@
           <tr>
             <td><%= link_to "#{item.share.truncate(100)}", linkedin_path(item) %></td>
             <td><%= item.post_time.to_formatted_s(:long) %></td>
-            <td><%= status(item) %></td>
+            <td><%= check(item) %></td>
           <td><a data-toggle="modal" href=<%="#myModal_#{item.id}"%>  ><i class="icon-edit"></i></a>&nbsp;
           <%= link_to "<i class='icon-remove'></i>".html_safe,linkedin_path(item), 
           :method => :delete %></a></td>
           </tr>
           <div class="modal hide fade in" id="myModal_<%=item.id%>"> 
-            <%=render :partial => "form", :locals => {:linkedin => item} %> 
+            <%= render :partial => "form", :locals => {:linkedin => item} %> 
        </div>
     <% end %>  
   </table>
