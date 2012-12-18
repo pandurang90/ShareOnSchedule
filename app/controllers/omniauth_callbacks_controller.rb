@@ -24,8 +24,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 				@name=get_name(auth)
 				@dummy_password = get_devise_token
 				@user=User.create(:username=>@name,:password=> @dummy_password,:password_confirmation=>@dummy_password)
-				current_user = @user
-				create_account(auth)
+				create_account(@user,auth)
 				sign_in_and_redirect current_user
 			end
 		end
@@ -43,7 +42,8 @@ alias_method :linkedin, :all
   	current_user
   end
 
-	def create_account(auth)
+	def create_account(user=nil,auth)
+		current_user=user if user
 		@name=auth['info']['nickname'] || auth['info']['name'] || auth['info']['username']
 		@verifier=params['oauth_verifier'] || get_devise_token
 		@secret=auth['credentials']['secret'] || get_devise_token
