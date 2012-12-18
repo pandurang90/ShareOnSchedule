@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ShareOnSchedule</title>
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="container">
+  <%= render :partial => "shared/header" %>
+  <div>&nbsp;</div>
+  <div class="row">
+    <div class="span8">
+      <%= yield %>
+      &nbsp;
+    </div>
+
+    <div class="span3 sidebar">
+      <%= render '/shared/accounts_connect' if current_user.present?%>
+      <% unless user_signed_in? %>
+      <span>
+      <%=link_to "Sign In with Twitter", user_omniauth_authorize_path(:twitter),
+      :class => "btn btn-primary twitter"%>
+      </span>
+      <div>&nbsp;</div>  
+      <%=link_to "Sign In with Facebook", user_omniauth_authorize_path(:facebook),
+      :class => "btn btn-primary facebook"%>
+      <div>&nbsp;</div>  
+      <%=link_to "Sign In with LinkedIn", user_omniauth_authorize_path(:linkedin),
+      :class => "btn btn-primary linkedin"%>
+      <div>&nbsp;</div>  
+      <%=link_to "Sign In or Create account", new_user_registration_path,
+      :class => "btn btn-primary signin"%>
+      <div>&nbsp;</div> 
+      <%=link_to "Sign In", new_user_session_path,
+      :class => "btn btn-primary signin"%>
+      <% end %>
+
+      <br/><br/>
+       <%= render '/shared/about' %>
+    </div>
+  </div>
+    <hr>
+    <%= render :partial => "shared/footer" %>
+
+  </div>
+ 
+</body>
+</html>

@@ -1,0 +1,11 @@
+
+<%if @tweet.id.present?%>
+  $('#myModal').modal('hide');
+  $('.new-tweet-form .modal-body textarea').val(" ");
+  $('.new-tweet-form .modal-body .hasDatetimepicker').val(" ");
+  $('.table').append('<tr><td> <%= link_to "#{@tweet.content.truncate(100)}", tweet_path(@tweet)%></td><td><%=@tweet.tweet_time.to_formatted_s(:long)%></td></tr>')
+
+<%else%>
+  $('#myModal').find('.modal-header').prepend("<div class='alert alert-error error-message'><%=@tweet.errors.full_messages.join(", ")%></div>")
+ $('.error-message').delay(900).fadeOut(900);
+<%end%>

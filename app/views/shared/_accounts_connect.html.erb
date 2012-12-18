@@ -1,0 +1,13 @@
+
+<%= link_to "Connect with Twitter", user_omniauth_authorize_path(:twitter),
+:class => "btn btn-primary twitter" if !has_twitter? %>
+<div>&nbsp;</div>  
+
+<%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook),
+:class => "btn btn-primary facebook" if !has_facebook? %>
+<div>&nbsp;</div>  
+
+<%= link_to "Connect with LinkedIn", user_omniauth_authorize_path(:linkedin),
+:class => "btn btn-primary linkedin" if !has_linkedin? %>
+<div>&nbsp;</div>
+<hr>

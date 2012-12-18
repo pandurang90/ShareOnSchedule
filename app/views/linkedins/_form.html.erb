@@ -1,0 +1,27 @@
+<%= form_for linkedin, :html => { :class => 'form-horizontal new-share-form' },:remote => true do |f| %> 
+  <div class="modal-header">  
+    New Share
+    <a class="close" data-dismiss="modal">×</a>  
+  </div> 
+  <div class="modal-body">  
+    <div class="control-group">
+      <%= f.label :share, "*Post a New Share:", :class => "control-label"%>
+      <div class="controls">
+        <%= f.text_area :share, :placeholder => 'Post a New Share....', 
+        :class => "input-xlarge", :rows => 6 %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :post_time, "Set Time :", :class => "control-label" %>
+      <div class="controls input-prepend">
+        <span class="add-on"><i class="icon-time"></i></span>
+        <%= f.text_field :post_time, :placeholder => 'Select Time to Post a Share', 
+        :class => "input-xlarge", :id => "date-time" %>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">  
+  <%= f.submit "Linkedin", class:'btn btn-success submit-btn' %> 
+  <a href="#" class="btn" data-dismiss="modal">Close</a>  
+  </div>  
+<% end %>

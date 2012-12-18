@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ShareOnSchedule</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="container">
+  <%= render :partial => "shared/header" %>
+  <div>&nbsp;</div>
+  <div class="row">
+    <div class="span8">
+      <%= yield %>
+      &nbsp;
+    </div>
+    <div class="span">&nbsp;</div>
+    <div class="span3 sidebar">
+        <%= yield :sidebar %>
+         <%= render '/shared/about' %>
+    </div>
+    
+  </div>
+  <hr/>
+</div>
+  <%= render :partial => "shared/footer" %>
+</body>
+</html>

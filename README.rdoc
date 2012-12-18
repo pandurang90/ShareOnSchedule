@@ -1,0 +1,17 @@
+Getting Started :-
+
+First, Start the Redis Server,
+
+$ src/redis-server
+
+after that, Start the Sidekiq
+
+$ bundle exec sidekiq
+
+then, Start the rails server with
+
+http://lvh.me:3000
+
+to use pry with rails environment loaded, 
+type,
+pry -r ./config/environment

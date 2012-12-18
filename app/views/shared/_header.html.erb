@@ -1,0 +1,26 @@
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <%= link_to "ShareOnSchedule", root_path, :class => "brand" %>
+      <div class="nav-collapse">
+        <ul class="nav nav-pills">
+          <li class="active">
+            <%= link_to "Home", root_path%>
+          </li>
+          <% if user_signed_in? %>
+            <li><%=link_to "Twitter", tweets_path if has_twitter?%></li>
+            <li><%=link_to "Facebook", fb_posts_path if has_facebook? %></li>
+            <li><%=link_to "LinkedIn", linkedins_path if has_linkedin? %></li>
+            <li><%=link_to "Account Settings","#"%></li>
+            <li><%=link_to "Logout", destroy_user_session_path, method: :delete %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
