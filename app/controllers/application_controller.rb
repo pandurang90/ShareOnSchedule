@@ -22,4 +22,6 @@ class ApplicationController < ActionController::Base
   def get_devise_token
     Devise.friendly_token[0,14]
   end
+
+
 end

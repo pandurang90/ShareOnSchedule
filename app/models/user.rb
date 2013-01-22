@@ -18,4 +18,43 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
+
+  def save_tweet(params)
+    @tweet=self.tweets.new(params)
+    @tweet.save
+    schedule_tweet(@tweet)
+  end
+
+  def save_lpost(params)
+    @linkedin=self.linkedins.new(params)
+    @linkedin.save
+    schedule_linkedin(@linkedin)
+  end
+
+  def save_fb_post(params)
+    @fb_post=self.fb_posts.new(params)
+    @fb_post.save
+    schedule_fbpost(@fb_post)
+  end
+
+  def schedule_tweet(tweet)
+    @tweet=tweet
+    @account = self.accounts.where(:provider => "twitter").first
+    time = Tweet.where(:id => @tweet.id).select("TIME_TO_SEC(TIME_TO_SEC(post_time)-TIME_TO_SEC(NOW())) as second").first.second
+    TweetWorker.perform_at(time.seconds.from_now,@account.oauth_token,@account.oauth_token_secret,@tweet.id)
+  end
+
+  def schedule_fbpost(post)
+    @fb_post=post
+    @account = self.accounts.where(:provider => "facebook").first
+    time = FbPost.where(:id => @fb_post.id).select("TIME_TO_SEC(TIME_TO_SEC(post_time)-TIME_TO_SEC(NOW())) as second").first.second
+    FbPostWorker.perform_at(time.seconds.from_now,@account.oauth_token,@fb_post.id)
+  end
+
+  def schedule_linkedin(linkedin)
+    @linkedin=linkedin
+    @account = self.accounts.where(:provider => "linkedin").first
+    time = Linkedin.where(:id => @linkedin.id).select("TIME_TO_SEC(TIME_TO_SEC(post_time)-TIME_TO_SEC(NOW())) as second").first.second
+    LinkedinWorker.perform_at(time.seconds.from_now,@account.oauth_token,@account.oauth_token_secret,@account.oauth_verifier,@linkedin.id)
+  end
 end
