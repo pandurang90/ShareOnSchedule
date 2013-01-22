@@ -4,7 +4,6 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 		auth = request.env["omniauth.auth"]
 		@account=Account.find_by_provider_and_uid(auth['provider'], auth['uid'])
 		#if account is present
-		#binding.pry
 		if @account	
 			if check_user
 				update_oauth_params(auth,@account)

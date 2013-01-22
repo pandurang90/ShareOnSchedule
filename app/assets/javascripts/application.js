@@ -11,8 +11,17 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 
+
+//= require jquery
+//= require jquery_ujs
 //= require bootstrap
 //= require jquery.ui.datetimepicker
 //= require_tree .
 
 
+$(document).ready(function(){   
+  $('#date-time').datetimepicker();
+  jQuery.each($('.modal-body #date-time'), function() {
+      $(this).datetimepicker();
+   });
+});

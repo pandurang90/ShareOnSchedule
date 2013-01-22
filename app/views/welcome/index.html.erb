@@ -4,6 +4,8 @@
     <li class="active"><a href="#tab1" data-toggle="tab">Facebook</a></li>
     <li><a href="#tab2" data-toggle="tab">Linkedin</a></li>
     <li><a href="#tab3" data-toggle="tab">Twitter</a></li>
+    <strong><a data-toggle="modal" href="#myModal" class="compose-new-tweet btn pull-right">Share</a>
+<div class="modal hide fade in" id="myModal"> <%=render :partial => "tweets/form", :locals => {:tweet => Tweet.new} %> </div></strong>
   </ul>
   <div class="tab-content"><div class="lead">Recently scheduled </div>
     <div class="tab-pane active" id="tab1">

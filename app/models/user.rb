@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
          
   attr_accessible :email, :password, :password_confirmation, :remember_me, :username
-  
+   validates :username, :presence=> true
   has_many :accounts
   has_many :tweets
   has_many :linkedins
