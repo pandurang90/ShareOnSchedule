@@ -9,9 +9,8 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 				update_oauth_params(auth,@account)
 				redirect_to root_path
 			else
-				current_user=@account.user		
 				update_oauth_params(auth,@account)
-				sign_in_and_redirect current_user
+				sign_in_and_redirect @account.user		
 			end
 			#update_oauth_params(auth,@account)
 		else

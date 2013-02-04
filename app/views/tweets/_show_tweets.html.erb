@@ -19,7 +19,7 @@
       </tr>
 
           <div class="modal hide fade in" id="myModal_<%=item.id%>">
-           <%#= render :partial => "form", :locals => {:tweet => item} %> </div>
+           <%= render :partial => "form", :locals => {:post => item} %> </div>
     <% end %>  
   </table>
 <%else%>
