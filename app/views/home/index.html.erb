@@ -1,0 +1,51 @@
+
+<div class="tabbable"> 
+  <ul class="nav nav-tabs edit-tab">
+    <%if has_facebook?%>
+    <li class="active"><a href="#tab1" data-toggle="tab">Facebook</a></li>
+    <%end%>
+    <%if has_linkedin?%>
+    <li><a href="#tab2" data-toggle="tab">Linkedin</a></li>
+    <%end%>
+    <%if has_twitter?%>
+    <li><a href="#tab3" data-toggle="tab">Twitter</a></li>
+    <%end%>
+    
+  </ul>
+  <div class="tab-content"><div class="lead">Recently scheduled </div>
+  <%if has_facebook?%>
+    <div class="tab-pane active" id="tab1">
+      <strong>
+        <a data-toggle="modal" href="#myModalf" class="compose-new-tweet btn pull-right">Share</a>
+        <div class="modal hide fade in" id="myModalf"> 
+          <%=render :partial => "fb_posts/form", :locals => {:post => FbPost.new} %> 
+        </div>
+      </strong>
+      <div>abca</div>
+    </div>
+    <%end%>
+    <%if has_linkedin?%>
+    <div class="tab-pane" id="tab2">
+      <strong>
+        <a data-toggle="modal" href="#myModall" class="compose-new-tweet btn pull-right">Share</a>
+        <div class="modal hide fade in" id="myModall"> 
+          <%=render :partial => "linkedins/form", :locals => {:post => Linkedin.new} %> 
+        </div>
+      </strong>
+      <div>abcd</div>
+    </div>
+    <%end%>
+    <%if has_twitter?%>
+    <div class="tab-pane" id="tab3">
+      <div>
+        <a data-toggle="modal" href="#myModalt" class="compose-new-tweet btn pull-right">Share</a>
+        <div class="modal hide fade in" id="myModalt"> 
+          <%=render :partial => "tweets/form", :locals => {:post => Tweet.new} %> 
+        </div>
+      </div>
+      <div>abcd</div>
+    </div>
+    <%end%>
+  </div>
+</div>
+

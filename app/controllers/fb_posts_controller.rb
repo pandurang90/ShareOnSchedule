@@ -9,9 +9,9 @@ class FbPostsController < ApplicationController
     @fb_post = current_user.fb_posts.new(params[:fb_post])
     respond_to do |format|
       if @fb_post.save
-        @account = current_user.accounts.where(:provider => "facebook").first
-        #time = Tweet.where(:id => @tweet.id).select("TIME_TO_SEC(TIME_TO_SEC(tweet_time)-TIME_TO_SEC(NOW())) as second").first.second
-        #TweetWorker.perform_at(time.seconds.from_now,@account.oauth_token,@account.oauth_token_secret,@tweet.id)
+        current_user.save_lpost(params[:fb_post]) if params[:linked]=='1'
+        current_user.save_tweet(params[:fb_post]) if params[:twitter]=='1'
+        current_user.schedule_fbpost(@fb_post)
         format.js{}
         format.html{ redirect_to fb_posts_path }
       else

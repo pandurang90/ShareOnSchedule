@@ -1,7 +1,7 @@
 class Tweet < ActiveRecord::Base
-  attr_accessible :content, :tweet_time, :user_id
+  attr_accessible :content, :post_time, :user_id
   validates_presence_of :content
-  validates_presence_of :tweet_time
+  validates_presence_of :post_time
   belongs_to :user
   after_save :schedule_tweet
   after_update :schedule_tweet

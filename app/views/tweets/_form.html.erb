@@ -1,4 +1,4 @@
-<%= form_for tweet, :html => { :class => 'form-horizontal new-tweet-form' },:remote => true do |f| %> 
+<%= form_for post, :html => { :class => 'form-horizontal new-tweet-form' },:remote => true do |f| %> 
   <div class="modal-header">  
     New Post
     <a class="close" data-dismiss="modal">×</a>  
@@ -12,20 +12,20 @@
       </div>
     </div>
     <div class="control-group">
-      <%= f.label :tweet_time, "Set Time :", :class => "control-label" %>
+      <%= f.label :post_time, "Set Time :", :class => "control-label" %>
       <div class="controls input-prepend">
         <span class="add-on"><i class="icon-time"></i></span>
-        <%= f.text_field :tweet_time, :placeholder => 'Select Time to share', 
-        :class => "input-xlarge", :id => "date-time" %>
+        <%= f.text_field :post_time, :placeholder => 'Select Time to share', 
+        :class => "input-xlarge", :id => "date-timet" %>
       </div>
     </div>
     <div class="control-group">
       <label class="control-label" for="inputadmin">Select where to post:</label>
 
       <div class="controls">
-        <%=check_box_tag 'twitter'%>&nbsp;Twitter &nbsp;
-        <%=check_box_tag 'facebook'%>&nbsp;Facebook &nbsp;
-        <%=check_box_tag 'linkedin'%>&nbsp;Linkedin
+        <%if has_twitter?%><%=check_box_tag 'twitter' %>&nbsp;Twitter &nbsp;<%end%>
+        <%if has_facebook?%><%=check_box_tag 'facebook' %>&nbsp;Facebook &nbsp;<%end%>
+        <%if has_linkedin?%><%=check_box_tag 'linked' %>&nbsp;Linkedin<%end%>
       </div>
     </div>
   </div>

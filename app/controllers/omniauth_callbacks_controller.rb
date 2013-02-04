@@ -4,15 +4,13 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 		auth = request.env["omniauth.auth"]
 		@account=Account.find_by_provider_and_uid(auth['provider'], auth['uid'])
 		#if account is present
-		#binding.pry
 		if @account	
 			if check_user
 				update_oauth_params(auth,@account)
 				redirect_to root_path
 			else
-				current_user=@account.user		
 				update_oauth_params(auth,@account)
-				sign_in_and_redirect current_user
+				sign_in_and_redirect @account.user		
 			end
 			#update_oauth_params(auth,@account)
 		else

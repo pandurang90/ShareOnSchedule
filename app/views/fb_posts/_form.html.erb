@@ -19,6 +19,15 @@
         :class => "input-xlarge", :id => "date-time" %>
       </div>
     </div>
+    <div class="control-group">
+      <label class="control-label" for="inputadmin">Select where to post:</label>
+
+      <div class="controls">
+        <%if has_twitter?%><%=check_box_tag 'twitter' %>&nbsp;Twitter &nbsp;<%end%>
+        <%if has_facebook?%><%=check_box_tag 'facebook' %>&nbsp;Facebook &nbsp;<%end%>
+        <%if has_linkedin?%><%=check_box_tag 'linked' %>&nbsp;Linkedin<%end%>
+      </div>
+    </div>
   </div>
   <div class="modal-footer">  
   <%= f.submit "Post", class:'btn btn-success submit-btn' %> 

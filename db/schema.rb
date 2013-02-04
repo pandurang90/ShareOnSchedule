@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121124121535) do
+ActiveRecord::Schema.define(:version => 20130122092424) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(:version => 20121124121535) do
 
   create_table "linkedins", :force => true do |t|
     t.integer  "user_id"
-    t.string   "share"
+    t.string   "content"
     t.datetime "post_time"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(:version => 20121124121535) do
   create_table "tweets", :force => true do |t|
     t.integer  "user_id"
     t.string   "content"
-    t.datetime "tweet_time"
+    t.datetime "post_time"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.boolean  "is_tweeted"

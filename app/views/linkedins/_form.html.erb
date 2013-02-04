@@ -1,13 +1,13 @@
-<%= form_for linkedin, :html => { :class => 'form-horizontal new-share-form' },:remote => true do |f| %> 
+<%= form_for post, :html => { :class => 'form-horizontal new-share-form' },:remote => true do |f| %> 
   <div class="modal-header">  
     New Share
     <a class="close" data-dismiss="modal">×</a>  
   </div> 
   <div class="modal-body">  
     <div class="control-group">
-      <%= f.label :share, "*Post a New Share:", :class => "control-label"%>
+      <%= f.label :content, "*Post a New Share:", :class => "control-label"%>
       <div class="controls">
-        <%= f.text_area :share, :placeholder => 'Post a New Share....', 
+        <%= f.text_area :content, :placeholder => 'Post a New Share....', 
         :class => "input-xlarge", :rows => 6 %>
       </div>
     </div>
@@ -16,7 +16,16 @@
       <div class="controls input-prepend">
         <span class="add-on"><i class="icon-time"></i></span>
         <%= f.text_field :post_time, :placeholder => 'Select Time to Post a Share', 
-        :class => "input-xlarge", :id => "date-time" %>
+        :class => "input-xlarge", :id => "date-timel" %>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="inputadmin">Select where to post:</label>
+
+      <div class="controls">
+        <%if has_twitter?%><%=check_box_tag 'twitter' %>&nbsp;Twitter &nbsp;<%end%>
+        <%if has_facebook?%><%=check_box_tag 'facebook' %>&nbsp;Facebook &nbsp;<%end%>
+        <%if has_linkedin?%><%=check_box_tag 'linked' %>&nbsp;Linkedin<%end%>
       </div>
     </div>
   </div>
