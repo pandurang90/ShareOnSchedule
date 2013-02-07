@@ -16,7 +16,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 		else
 			# IF account not found
 			if check_user
-				create_account(auth)
+				create_account(check_user,auth)
 				redirect_to root_path
 			else
 				@name=get_name(auth)
@@ -39,18 +39,17 @@ alias_method :linkedin, :all
   	current_user
   end
 
-	def create_account(user=nil,auth)
-		current_user=user if user
+	def create_account(user,auth)
 		@name=auth['info']['nickname'] || auth['info']['name'] || auth['info']['username']
 		@verifier=params['oauth_verifier'] || get_devise_token
 		@secret=auth['credentials']['secret'] || get_devise_token
-		@account = current_user.accounts.create(:username => @name, 
+		@account = user.accounts.create(:username => @name, 
 																		 :uid => auth['uid'], 
 																		 :provider => auth['provider'], 
 																		 :oauth_token => auth['credentials']['token'],
 																		 :oauth_token_secret => @secret,
 																		 :oauth_verifier => @verifier)
-		sign_in_and_redirect current_user if user
+		check_user ? redirect_to root_path : sign_in_and_redirect user 
 
 	end
 
