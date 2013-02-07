@@ -3,8 +3,7 @@ class Linkedin < ActiveRecord::Base
   validates_presence_of :content
   validates_presence_of :post_time
   belongs_to :user
-  after_save :schedule_share
-  after_update :schedule_share
+
 
 protected
   def schedule_share
