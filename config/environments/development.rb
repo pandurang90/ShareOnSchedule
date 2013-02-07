@@ -41,4 +41,9 @@ ShareOnSchedule::Application.configure do
   config.assets.debug = true
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  FACEBOOK_APP_ID ="400385509997929"
+  FACEBOOK_SECRET ="aa3cf501b9df6c0d6ca5f01786a9a6d2"
+  OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+
 end
