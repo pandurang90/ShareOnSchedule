@@ -5,8 +5,8 @@ development:
   database: ShareOnSchedule_development
   pool: 5
   username: root
-  password: 
-  socket: /var/run/mysqld/mysqld.sock
+  password: thakkar
+
 
 test:
   adapter: mysql2
@@ -15,8 +15,8 @@ test:
   database: ShareOnSchedule_test
   pool: 5
   username: root
-  password:
-  socket: /var/run/mysqld/mysqld.sock
+  password: thakkar
+
 
 production:
   adapter: mysql2
@@ -25,5 +25,5 @@ production:
   database: ShareOnSchedule_production
   pool: 5
   username: root
-  password: 
+  password: thakkar
   socket: /var/run/mysqld/mysqld.sock

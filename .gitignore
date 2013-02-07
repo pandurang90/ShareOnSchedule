@@ -15,4 +15,4 @@
 /config/database.yml
 /tmp
 db/schema.rb
-
+.rvmrc
