@@ -10,8 +10,8 @@ class TweetsController < ApplicationController
     @tweet = current_user.tweets.new(params[:tweet])
     respond_to do |format|
       if @tweet.save
-        current_user.save_lpost(params[:tweet]) if params[:linked]=='1'
-        current_user.save_fbpost(params[:tweet]) if params[:facebook]=='1'
+        current_user.save_lpost(params[:linked]) if params[:linked]=='1'
+        current_user.save_fbpost(params[:facebook]) if params[:facebook]=='1'
         current_user.schedule_tweet(@tweet)
         format.js{}
         format.html{ redirect_to tweets_path }
