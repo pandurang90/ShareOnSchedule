@@ -5,8 +5,8 @@ development:
   database: ShareOnSchedule_development
   pool: 5
   username: root
-  password: 
-  socket: /var/run/mysqld/mysqld.sock
+  password: thakkar
+
 
 test:
   adapter: mysql2
@@ -15,16 +15,14 @@ test:
   database: ShareOnSchedule_test
   pool: 5
   username: root
-  password:
-  socket: /var/run/mysqld/mysqld.sock
+  password: thakkar
+
 
 production:
   adapter: mysql2
   encoding: utf8
   database: <%=ENV['OPENSHIFT_APP_NAME']%>
   pool: 5
-  host: <%=ENV['OPENSHIFT_MYSQL_DB_HOST']%>
-  port: <%=ENV['OPENSHIFT_MYSQL_DB_PORT']%>
-  username: <%=ENV['OPENSHIFT_MYSQL_DB_USERNAME']%>
-  password: <%=ENV['OPENSHIFT_MYSQL_DB_PASSWORD']%>
-  socket: <%=ENV['OPENSHIFT_MYSQL_DB_SOCKET']%>
+  username: root
+  password: thakkar
+  socket: /var/run/mysqld/mysqld.sock
