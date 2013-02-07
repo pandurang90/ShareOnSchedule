@@ -17,7 +17,6 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 			# IF account not found
 			if check_user
 				create_account(check_user,auth)
-				redirect_to root_path
 			else
 				@name=get_name(auth)
 				@dummy_password = get_devise_token
