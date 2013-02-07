@@ -64,4 +64,6 @@ ShareOnSchedule::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+  FACEBOOK_APP_ID ="290884681037595"
+  FACEBOOK_SECRET ="81fae1d81120be67119c2958bf5eeb14"
 end
