@@ -13,8 +13,8 @@ class LinkedinsController < ApplicationController
     @linkedin = current_user.linkedins.new(params[:linkedin])
     respond_to do |format|
       if @linkedin.save
-        current_user.save_tweet(params[:linkedin]) if params[:twitter]=='1'
-        current_user.save_fbpost(params[:linkedin]) if params[:facebook]=='1'
+        current_user.save_tweet(params[:twitter]) if params[:twitter]=='1'
+        current_user.save_fbpost(params[:facebook]) if params[:facebook]=='1'
         current_user.schedule_linkedin(@linkedin)
         format.js{}
         format.html{ redirect_to linkedins_path }
