@@ -13,28 +13,28 @@
  *= require_tree .
  */
 
-.twitter,.facebook,.linkedin,.signin
+/*.twitter,.facebook,.linkedin,.signin
 {
   width: 60%;
   height: 25px;
 
-}
+}*/
 
- .container
+/* .container
  {
    padding-top: 10px;
  }
+*/
 
-
-.btn-primary
+/*.btn-primary
 {
   background-color: #00ACED;
-}
+}*/
 /*body{background:url(/assets/debut_light.png);background-size:100% 100%;}*/
-.span8,.span3{background-color: white;padding: 10px 10px;border-radius: 4px;}
+/*.span8,.span3{background-color: white;padding: 10px 10px;border-radius: 4px;}
 h2.block-head{color: #4C0B5F;}
 /* sign in page */
-.formInput {margin-left: 40px; font:normal 12px verdana;}
-.Links {margin-left: 40px; font:normal 22px verdana;}
-.remember{margin: 10px 0 10px 0;}
-.remember.divider{display:block; padding:0 5px}
+/*.formInput {margin-left: 40px; font:normal 12px verdana;}*/
+/*.Links {margin-left: 40px; font:normal 22px verdana;}*/
+/*.remember{margin: 10px 0 10px 0;}*/
+/*.remember.divider{display:block; padding:0 5px}*/

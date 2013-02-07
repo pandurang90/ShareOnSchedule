@@ -1,14 +1,19 @@
 $iconSpritePath: image-path('glyphicons-halflings.png');
 $iconWhiteSpritePath: image-path('glyphicons-halflings-white.png');
-
-//$navbarBackground: #192B19;
-$navbarBackground: #192b28;
-$navbarBackgroundHighlight: #888;
+$iconSpritePath:          asset-url("glyphicons-halflings.png", image) !default;
+/*$btnPrimaryBackground: #f00;*/
+$navbarBackground: #242424;
+$navbarBackgroundHighlight: #555;
 $navbarText: #eee;
-$navbarLinkColor: #eee;
-$navbarLinkColorHover: #66A366;
-$navbarLinkColorActive: #66A366;
-$navbarBrandColor: #FAFFB8;
+$navbarLinkColorActive:#fff;
+/*LINK TEXT COLOR*/
+$navbarLinkColorHover:#fff;
+/*Link BACKGROUND COLOR*/
+$navbarLinkBackgroundHover:#111;
+$navbarLinkBackgroundActive: #111;
+$navbarHeight:50px;
+$navbarLinkColor: #fff;
+
 
 @import "bootstrap";
 
@@ -17,12 +22,44 @@ body { padding-top: 60px; }
 @import "bootstrap-responsive";
 
 // Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
-// Note: If you use asset_path() here, your compiled boostrap_and_overrides.css will not 
+// Note: If you use asset_path() here, your compiled boostrap_and_overrides.css will not
 //       have the proper paths. So for now we use the absolute path.
 
 
 // Font Awesome
 @import "font-awesome";
+body {
+  padding-top: 70px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+  color: #333;
+  /*background-color: #f7f7f7;*/
+
+ }
+.navbar{
+   moz-box-shadow: 0 0 20px rgba(0,0,0,0.7);
+  -webkit-box-shadow: 0 0 20px rgba(0,0,0,0.7);
+  box-shadow: 0 0 20px rgba(0,0,0,0.7);
+  border-bottom: 1px solid rgba(255,255,255,0.6);
+
+}
+.navbar .nav > li.active.main-nav > a ,.navbar .nav > li.active.main-nav > a:hover, .navbar .nav > li.main-nav > a:hover{
+  background: none;
+  box-shadow: none;
+  border-bottom:solid #dff0d8 3px;
+}
+ .navbar .brand {
+  color: #FAFFB8;
+}
+@import "bootstrap-responsive";
+[class^="icon-"], [class*=" icon-"] {
+  background-image: url($iconSpritePath);
+  }
+.icon-white{
+   background-image: url($iconWhiteSpritePath);
+}
+
 
 
 // Your custom LESS stylesheets goes here
@@ -36,4 +73,5 @@ body { padding-top: 60px; }
 // Example:
 // @linkColor: #ff0000;
 /* Sign in page */
+
 .sbutton>input {border-radius: 5px; width:100px; height: 28px; background: #192B28; border-color: #192B28; color: white; font:normal 14px verdana;}
