@@ -16,3 +16,4 @@
 /tmp
 db/schema.rb
 .rvmrc
+.DS_STORE
