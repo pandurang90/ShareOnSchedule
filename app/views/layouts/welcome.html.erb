@@ -19,26 +19,24 @@
     <div class="span3 sidebar">
       <%= render '/shared/accounts_connect' if current_user.present?%>
       <% unless user_signed_in? %>
-      <span>
-      <%=link_to "Sign In with Twitter", user_omniauth_authorize_path(:twitter),
-      :class => "btn btn-primary twitter"%>
-      </span>
+      <div>
+      <p class="signin">Login / Sign up by</p>
+      <%=link_to "<img src='/assets/Twitter-32.png' alt='tlogin'/>".html_safe, user_omniauth_authorize_path(:twitter)%>
+      
+      <%=link_to "<img src='/assets/FaceBook-32.png' alt='fblogin'/>".html_safe, user_omniauth_authorize_path(:facebook)%>
+      
+      <%=link_to "<img src='/assets/LinkedIn-32.png' alt='Lnlogin'/>".html_safe, user_omniauth_authorize_path(:linkedin)%>
+    </div>
       <div>&nbsp;</div>  
-      <%=link_to "Sign In with Facebook", user_omniauth_authorize_path(:facebook),
-      :class => "btn btn-primary facebook"%>
-      <div>&nbsp;</div>  
-      <%=link_to "Sign In with LinkedIn", user_omniauth_authorize_path(:linkedin),
-      :class => "btn btn-primary linkedin"%>
-      <div>&nbsp;</div>  
-      <%=link_to "Sign In or Create account", new_user_registration_path,
-      :class => "btn btn-primary signin"%>
-      <div>&nbsp;</div> 
       <%=link_to "Sign In", new_user_session_path,
       :class => "btn btn-primary signin"%>
+      <%=link_to "Create account", new_user_registration_path,
+      :class => "btn btn-primary signin"%>
+      
       <% end %>
 
       <br/><br/>
-       <%= render '/shared/about' %>
+      
     </div>
   </div>
     <hr>

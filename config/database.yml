@@ -5,7 +5,7 @@ development:
   database: ShareOnSchedule_development
   pool: 5
   username: root
-  password: thakkar
+  password: 
 
 
 test:
@@ -15,7 +15,7 @@ test:
   database: ShareOnSchedule_test
   pool: 5
   username: root
-  password: thakkar
+  password: 
 
 
 production:
