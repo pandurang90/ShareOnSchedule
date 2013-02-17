@@ -42,6 +42,13 @@ body {
   -webkit-box-shadow: 0 0 20px rgba(0,0,0,0.7);
   box-shadow: 0 0 20px rgba(0,0,0,0.7);
   border-bottom: 1px solid rgba(255,255,255,0.6);
+  .nav{
+    font-size:1.2em;
+    font-weight: bold;
+   li a{
+    color:#ddd;
+   }  
+  }
 
 }
 .navbar .nav > li.active.main-nav > a ,.navbar .nav > li.active.main-nav > a:hover, .navbar .nav > li.main-nav > a:hover{
@@ -73,5 +80,5 @@ body {
 // Example:
 // @linkColor: #ff0000;
 /* Sign in page */
-
 .sbutton>input {border-radius: 5px; width:100px; height: 28px; background: #192B28; border-color: #192B28; color: white; font:normal 14px verdana;}
+
