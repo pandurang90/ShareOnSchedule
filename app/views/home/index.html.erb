@@ -49,11 +49,15 @@
     </div>
   </div>
 <%else%>
-<div class="row">
-<div class="span4">
-  <%=image_tag 'manage.png'%><br/><br/>
-  <center><%=image_tag 'social-media-marketing.png',:size=>"300x300"%></center>
-</div>
-  <div class="span4"><%= render '/shared/about' %></div>
-</div>
+  <div class="row">
+    <div class="span4">
+      <%=image_tag 'manage.png'%><br/><br/>
+      <center><%=image_tag 'social-media-marketing.png',:size=>"300x300"%></center>
+    </div>
+    <div class="span4"><%= render '/shared/about' %></div>
+  </div>
 <%end%>
+<!-- twitter timeline for shareonschedule
+<a class="twitter-timeline" href="https://twitter.com/shareonschedule" data-widget-id="303392797195632640">Tweets by @shareonschedule</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+!-->
