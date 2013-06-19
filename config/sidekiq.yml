@@ -1,19 +1,5 @@
 :verbose: false
-:namespace: xyz
 :logfile: log/sidekiq.log
-:concurrency:  25
-:strict: false
-:pidfile: tmp/pids/sidekiq.pid
+:concurrency: 5
 :queues:
   - [share_on_social, 10]
-development:
-  :verbose: true
-  :concurrency:  15
-  :queues:
-    - [share_on_social, 10]
-staging:
-  :queues:
-    - [share_on_social, 10]
-production:
-  :queues:
-    - [share_on_social, 10]
