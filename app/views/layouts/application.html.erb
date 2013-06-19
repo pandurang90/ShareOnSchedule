@@ -5,8 +5,18 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Gabriela' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Fruktur' rel='stylesheet' type='text/css'>
 </head>
 <body>
+  <script>
+  $(document).ready(function(){
+    $('.demo4').eq(0).easyTicker({
+      direction: 'up',
+      interval: 2000
+    });
+  });
+</script>
 <div class="container">
   <%= render :partial => "shared/header" %>
   <div>&nbsp;</div>
@@ -17,13 +27,43 @@
     </div>
     <div class="span">&nbsp;</div>
     <div class="span3 sidebar">
+      <%#= render '/shared/accounts_connect' if current_user.present?%>
         <%= yield :sidebar %>
-         
+        <% if current_user.present?%>
+          <div class="lead">Recently scheduled </div>
+            <div class="demo4">
+              <div style="position: absolute; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; top: 0px; "> 
+                <div>
+                  <a href="#">From propaganda to pop artist</a>
+                  <p>Song Byeok had every reason to be pleased with his success. A gift for drawing led to a prestigious career as a propaganda artist and full membership in North Korea's communist party.</p>
+                </div>
+                <div>
+                  <a href="#">The world of Gilbert and George</a>
+                  <p>The art duo of Gilbert and George on how their work can ruffle feathers and the benefits of routine.</p>
+                </div>
+                <div>
+                  <a href="#">From propaganda to pop artist</a>
+                  <p>Song Byeok had every reason to be pleased with his success. A gift for drawing led to a prestigious career as a propaganda artist and full membership in North Korea's communist party.</p>
+                </div>
+                <div>
+                  <a href="#">The world of Gilbert and George</a>
+                  <p>The art duo of Gilbert and George on how their work can ruffle feathers and the benefits of routine.</p>
+                </div>
+                <div>
+                  <a href="#">From propaganda to pop artist</a>
+                  <p>Song Byeok had every reason to be pleased with his success. A gift for drawing led to a prestigious career as a propaganda artist and full membership in North Korea's communist party.</p>
+                </div>
+                <div>
+                  <a href="#">The world of Gilbert and George</a>
+                  <p>The art duo of Gilbert and George on how their work can ruffle feathers and the benefits of routine.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        <%end%>
+      </div>
+      <hr/>
     </div>
-
-  </div>
-  <hr/>
-</div>
-  <%= render :partial => "shared/footer" %>
-</body>
+    <%= render :partial => "shared/footer" %>
+  </body>
 </html>

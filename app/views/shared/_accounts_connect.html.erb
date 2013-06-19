@@ -1,13 +1,6 @@
+<%= link_to "<img src='/assets/Twitter-32.png' alt='tlogin'/>".html_safe, user_omniauth_authorize_path(:twitter) if !has_twitter? %>
+ 
+<%= link_to "<img src='/assets/FaceBook-32.png' alt='fblogin'/>".html_safe, user_omniauth_authorize_path(:facebook) if !has_facebook? %>
 
-<center><%= link_to "<img src='/assets/Twitter-32.png' alt='tlogin'/>".html_safe, user_omniauth_authorize_path(:twitter),
-:class => "btn btn-primary twitter" if !has_twitter? %></center>
-<div>&nbsp;</div>  
+<%= link_to "<img src='/assets/LinkedIn-32.png' alt='Lnlogin'/>".html_safe, user_omniauth_authorize_path(:linkedin) if !has_linkedin? %>
 
-<%= link_to "<img src='/assets/FaceBook-32.png' alt='fblogin'/>".html_safe, user_omniauth_authorize_path(:facebook),
-:class => "btn btn-primary facebook" if !has_facebook? %>
-<div>&nbsp;</div>  
-
-<%= link_to "<img src='/assets/LinkedIn-32.png' alt='Lnlogin'/>".html_safe, user_omniauth_authorize_path(:linkedin),
-:class => "btn btn-primary linkedin" if !has_linkedin? %>
-<div>&nbsp;</div>
-<hr>

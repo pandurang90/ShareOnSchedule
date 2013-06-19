@@ -5,6 +5,8 @@
   <%= stylesheet_link_tag "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Gabriela' rel='stylesheet' type='text/css'>
+
 </head>
 <body>
   <div id="fb-root"></div>
@@ -26,36 +28,10 @@
   <%= render :partial => "shared/header" %>
   <div>&nbsp;</div>
   <div class="row">
-    <div class="span8">
       <%= yield %>
-      &nbsp;
-    </div>
-<div class="span">&nbsp;</div>
-    <div class="span3 sidebar">
-      <%= render '/shared/accounts_connect' if current_user.present?%>
-      <% unless user_signed_in? %>
-        <div>
-          <p class="signin">Login / Sign up by</p>
-          <%=link_to "<img src='/assets/Twitter-32.png' alt='tlogin'/>".html_safe, user_omniauth_authorize_path(:twitter)%>
-
-          <%=link_to "<img src='/assets/FaceBook-32.png' alt='fblogin'/>".html_safe, user_omniauth_authorize_path(:facebook)%>
-
-          <%=link_to "<img src='/assets/LinkedIn-32.png' alt='Lnlogin'/>".html_safe, user_omniauth_authorize_path(:linkedin)%>
-        </div>
-        <div>&nbsp;</div>  
-        <%=link_to "Sign In", new_user_session_path,:class => "btn btn-primary signin"%>
-        <%=link_to "Create account", new_user_registration_path,:class => "btn btn-primary signin"%>
-        
-        
-      <% end %>
-
-      <br/><br/>
-       <%= render '/shared/notification_sidebar' %>
-    </div>
   </div>
     <hr>
     <%= render :partial => "shared/footer" %>
-
   </div>
  
 </body>

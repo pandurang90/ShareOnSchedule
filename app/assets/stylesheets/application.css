@@ -10,6 +10,7 @@
  *
  *= require_self
  *= require jquery.ui.datetimepicker
+ *= require anytime
  *= require_tree .
  */
 
@@ -41,5 +42,6 @@ h2.block-head{color: #4C0B5F;}
 .remember.divider{display:block; padding:0 5px}
 .fl {float:left} 
 .fr {float:right}*/
+
 
 

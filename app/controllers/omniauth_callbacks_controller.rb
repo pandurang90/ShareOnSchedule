@@ -2,8 +2,10 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
 	def all
 		auth = request.env["omniauth.auth"]
+
 		@account=Account.find_by_provider_and_uid(auth['provider'], auth['uid'])
 		#if account is present
+		#binding.pry
 		if @account	
 			if check_user
 				update_oauth_params(auth,@account)
@@ -39,9 +41,9 @@ alias_method :linkedin, :all
   end
 
 	def create_account(user,auth)
-		@name=auth['info']['nickname'] || auth['info']['name'] || auth['info']['username']
-		@verifier=params['oauth_verifier'] || get_devise_token
-		@secret=auth['credentials']['secret'] || get_devise_token
+		@name = auth['info']['nickname'] || auth['info']['name'] || auth['info']['username']
+		@verifier = params['oauth_verifier'] || get_devise_token
+		@secret = auth['credentials']['secret'] || get_devise_token
 		@account = user.accounts.create(:username => @name, 
 																		 :uid => auth['uid'], 
 																		 :provider => auth['provider'], 

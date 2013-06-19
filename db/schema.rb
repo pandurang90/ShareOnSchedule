@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130228132508) do
+ActiveRecord::Schema.define(:version => 20130618094857) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -41,6 +41,15 @@ ActiveRecord::Schema.define(:version => 20130228132508) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.boolean  "is_shared"
+  end
+
+  create_table "messages", :force => true do |t|
+    t.string   "shared_on"
+    t.string   "msg_text"
+    t.string   "msg_type"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "tweets", :force => true do |t|

@@ -21,6 +21,10 @@ body { padding-top: 60px; }
 
 @import "bootstrap-responsive";
 
+@font-face {
+    font-family: "rabiohead";
+    src: url(fonts/Flux_Architect_Italic.ttf) format("truetype");
+}
 // Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
 // Note: If you use asset_path() here, your compiled boostrap_and_overrides.css will not
 //       have the proper paths. So for now we use the absolute path.
@@ -82,3 +86,35 @@ body {
 /* Sign in page */
 .sbutton>input {border-radius: 5px; width:100px; height: 28px; background: #192B28; border-color: #192B28; color: white; font:normal 14px verdana;}
 
+.division
+{
+display: inline-block;
+margin: 17px 0 23px;
+position: relative;
+text-align: center;
+width: 60%;}
+.division .left{width:35%;float:left;border-color: #E2E2E4;
+border-width: 1px;
+margin: 0;top:13px;}
+.division .right{width:35%;float:right;border-color: #E2E2E4;border-width: 1px;margin: 0;}
+
+
+
+.demo4{
+  height:320px !important;
+  border: 2px solid #f0f0f0;
+  margin-top: 1px;
+  font-size: 12px;
+  border-radius: 10px;
+}
+.demo4 div div{
+  padding: 10px 10px 10px 10px;
+  border-bottom: solid #f0f0f0;
+  //background: url(/resources/images/pages/jquery-easy-ticker/rss.png) no-repeat 15px center;
+  border-radius: 10px;
+}
+
+
+*{font-family: 'Gabriela', serif;}
+
+.about{font-size:15px;line-height:25px;}

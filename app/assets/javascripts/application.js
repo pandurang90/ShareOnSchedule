@@ -15,6 +15,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require jquery.ui.core
 //= require jquery.ui.datetimepicker
+//= require jquery.easing
+//= require jquery.easy-ticker
+//= require jquery-migrate-1.0.0
+//= require anytime
 //= require_tree .
 

@@ -99,7 +99,7 @@ $.extend($.ui, { datetimepicker: { version: "1.0.0"} });
             dayNamesShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'], // For formatting
             dayNamesMin: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'], // Column headings for days starting at Sunday
             weekHeader: 'Wk', // Column header for week of the year
-            dateFormat: 'dd/mm/yyyy hh:MM TT', // See format options on parseDate
+            dateFormat: 'mm/dd/yyyy hh:MM TT', // See format options on parseDate
             /*  format options.
             dd     - Day of the month as digits; leading zero for single-digit days. 
             ddd    - Day of the week as a three-letter abbreviation. 
@@ -295,11 +295,11 @@ $.extend($.ui, { datetimepicker: { version: "1.0.0"} });
 			}).bind("getData.datepicker", function(event, key) {
 			    return this._get(inst, key);
 			});
-            this._autoSize(inst);
             $.data(target, PROP_NAME, inst);
         },
 
         /* Make attachments based on settings. */
+           // this._autoSize(inst);
         _attachments: function(input, inst) {
             var appendText = this._get(inst, 'appendText');
             var isRTL = this._get(inst, 'isRTL');
@@ -784,7 +784,7 @@ $.extend($.ui, { datetimepicker: { version: "1.0.0"} });
 					    width: inst.dpDiv.outerWidth(), height: inst.dpDiv.outerHeight()
 					});
                 };
-                //inst.dpDiv.zIndex($(input).zIndex() + 1);
+                inst.dpDiv.zIndex($(input).zIndex() + 1);
                 if ($.effects && $.effects[showAnim])
                     inst.dpDiv.show(showAnim, $.datetimepicker._get(inst, 'showOptions'), duration, postProcess);
                 else
@@ -1708,12 +1708,12 @@ $.extend($.ui, { datetimepicker: { version: "1.0.0"} });
                 inst.currentMinute = inst.selectedMinute;
             }
             var timepicker = this._get(inst, 'timepicker')
+            inst.currentMonth += 1;
             if(timepicker){
                var Hour = inst.currentHour;
                if (Hour > 12){
                   Hour = Hour - 12;
 	       }
-               inst.currentMonth += 1;
                var MinuteString = inst.currentMinute;
                if (MinuteString.length == 1){
                   MinuteString = "0" + MinuteString;

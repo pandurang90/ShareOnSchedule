@@ -11,11 +11,6 @@ class Account < ActiveRecord::Base
   def checking_provider?
   	provider == 'facebook' || provider == 'linkedin'
   end
-  
-  def facebook_post
-  	@post = Koala::Facebook::API.new(oauth_token)
-  	@post.put_wall_post("hello!")
-  end
 
   def self.has_account(provider)
     where(:provider => provider).first

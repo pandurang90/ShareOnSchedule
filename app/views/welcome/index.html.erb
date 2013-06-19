@@ -1,20 +1,35 @@
-
-<div class="tabbable"> 
-  <ul class="nav nav-tabs edit-tab">
-    <li class="active"><a href="#tab1" data-toggle="tab">Facebook</a></li>
-    <li><a href="#tab2" data-toggle="tab">Linkedin</a></li>
-    <li><a href="#tab3" data-toggle="tab">Twitter</a></li>
-  </ul>
-  <div class="tab-content"><div class="lead">Recently scheduled </div>
-    <div class="tab-pane active" id="tab1">
-      <div>abc</div>
-    </div>
-    <div class="tab-pane" id="tab2">
-      <div>abcd</div>
-    </div>
-    <div class="tab-pane" id="tab3">
-      <div></div>
-    </div>
-  </div>
+<div class="span3">
+  <%=image_tag 'manage.png',:size => "300x500"%><br/><br/>
+  <center><%=image_tag 'social-media-marketing.png',:size=>"280x300"%></center>
 </div>
+<div class="span">&nbsp;</div>
+<div class="span9">
+  <div class="row">
+    <div class="span6">
+      <%= render '/shared/about' %>
+    </div>
 
+  <% unless user_signed_in? %>
+    <div class="span3">
+      
+      <%=link_to "<img src='/assets/twitter.png' alt='tlogin'/>".html_safe, user_omniauth_authorize_path(:twitter)%>
+      <br/><br/>
+      <%=link_to "<img src='/assets/facebook.png' alt='fblogin'/>".html_safe, user_omniauth_authorize_path(:facebook)%>
+      <br/><br/>
+      <%=link_to "<img src='/assets/linkedin.png' alt='Lnlogin'/>".html_safe, user_omniauth_authorize_path(:linkedin)%>
+      <br/><br/>
+      <div class="division"><hr class="left" /><strong>OR</strong><hr class="right" /></div>
+      <br/><br/>
+      <%=link_to "Login", new_user_session_path,:class => "btn btn-primary signin"%> 
+      &nbsp;
+      <%=link_to "Sign up", new_user_registration_path,:class => "btn btn-primary signup"%>
+    </div>
+  
+  </div>  
+
+
+  <% end %>
+
+  <br/><br/>
+  <%#= render '/shared/notification_sidebar' %>
+</div>

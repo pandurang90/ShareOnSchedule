@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  shared_on: MyString
+  msg_text: MyString
+  msg_type: MyString
+  user_id: 1
+
+two:
+  shared_on: MyString
+  msg_text: MyString
+  msg_type: MyString
+  user_id: 1
