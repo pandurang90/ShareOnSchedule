@@ -1,9 +1,9 @@
 ShareOnSchedule::Application.configure do
 
-  LINKEDIN_API_KEY="u75dvcqku00k"
-  LINKEDIN_SECRET_KEY="KH6gnEKHs71Ph8Vx"
-  TWITTER_CONSUMER_KEY = "2lPup6YS8TaC9WKNOwj0g",
-  TWITTER_CONSUMER_SECRET = "YiNbL9ossS70oZCNNvqKbz4oi2zE4ugfO5fdI9J6A0"
+  LINKEDIN_API_KEY=""
+  LINKEDIN_SECRET_KEY=""
+  TWITTER_CONSUMER_KEY = "",
+  TWITTER_CONSUMER_SECRET = ""
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
@@ -42,8 +42,8 @@ ShareOnSchedule::Application.configure do
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
-  FACEBOOK_APP_ID ="400385509997929"
-  FACEBOOK_SECRET ="aa3cf501b9df6c0d6ca5f01786a9a6d2"
+  FACEBOOK_APP_ID =""
+  FACEBOOK_SECRET =""
   OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
 end
