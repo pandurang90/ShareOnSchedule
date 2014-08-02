@@ -64,10 +64,10 @@ ShareOnSchedule::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
-  FACEBOOK_APP_ID ="290884681037595"
-  FACEBOOK_SECRET ="81fae1d81120be67119c2958bf5eeb14"
-  LINKEDIN_API_KEY="u75dvcqku00k"
-  LINKEDIN_SECRET_KEY="KH6gnEKHs71Ph8Vx"
-  TWITTER_CONSUMER_KEY = "2lPup6YS8TaC9WKNOwj0g",
-  TWITTER_CONSUMER_SECRET = "YiNbL9ossS70oZCNNvqKbz4oi2zE4ugfO5fdI9J6A0"
+  FACEBOOK_APP_ID =""
+  FACEBOOK_SECRET =""
+  LINKEDIN_API_KEY=""
+  LINKEDIN_SECRET_KEY=""
+  TWITTER_CONSUMER_KEY = "",
+  TWITTER_CONSUMER_SECRET = ""
 end
